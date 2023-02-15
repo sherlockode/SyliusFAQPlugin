@@ -1,0 +1,24 @@
+{
+    "name": "sherlockode/sylius-faq-plugin",
+    "type": "sylius-plugin",
+    "description": "Sylius plugin for FAQ page",
+    "keywords": [
+        "sylius",
+        "sylius-plugin",
+        "FAQ"
+    ],
+    "license": "MIT",
+    "require": {
+        "ext-soap": "*",
+        "php": "^8.0",
+        "sylius/sylius": "~1.12.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Sherlockode\\SyliusFAQPlugin\\": "src/"
+        }
+    }
+}
