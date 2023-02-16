@@ -11,7 +11,6 @@ use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @ORM\Entity
@@ -54,7 +53,11 @@ class Category implements ResourceInterface, TranslatableInterface
     /**
      * @var Collection|ChannelInterface[]
      *
-     * @ORM\OneToMany(targetEntity="Sylius\Component\Core\Model\Channel")
+     * @ORM\ManyToMany(targetEntity="Sylius\Component\Core\Model\Channel")
+     * @ORM\JoinTable(name="sherlockode_faq_categories_channels",
+     *     joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="channel_id", referencedColumnName="id")}
+     * )
      */
     private $channels;
 
@@ -154,14 +157,6 @@ class Category implements ResourceInterface, TranslatableInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function createTranslation(): TranslationInterface
-    {
-        return new CategoryTranslation();
-    }
-
-    /**
      * @return Collection|ChannelInterface[]
      */
     public function getChannels(): Collection
@@ -191,5 +186,13 @@ class Category implements ResourceInterface, TranslatableInterface
         $this->channels->removeElement($channel);
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function createTranslation(): CategoryTranslation
+    {
+        return new CategoryTranslation();
     }
 }

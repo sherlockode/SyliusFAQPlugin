@@ -1,0 +1,17 @@
+sherlockode_sylius_faq_admin_category:
+    resource: |
+        alias: sherlockode_sylius_faq.category
+        section: admin
+        templates: "@SherlockodeSyliusFAQPlugin/admin/Crud"
+        redirect: update
+        grid: sherlockode_sylius_faq_admin_category
+    type: sylius.resource
+
+sherlockode_sylius_faq_admin_question:
+    resource: |
+        alias: sherlockode_sylius_faq.question
+        section: admin
+        templates: "@SherlockodeSyliusFAQPlugin/admin/Crud"
+        redirect: update
+        grid: sherlockode_sylius_faq_admin_question
+    type: sylius.resource
