@@ -15,3 +15,29 @@ services:
         tags:
             - { name: form.type }
         arguments: [ '%sherlockode_sylius_faq.model.question_translation.class%', [ 'sylius' ] ]
+
+    sherlockode_sylius_faq.listener.category_image_uploader:
+        class: Sherlockode\SyliusFAQPlugin\EventListener\CategoryListener
+        arguments: 
+             - '@sherlockode_sylius_faq.image_uploader'
+             - '@liip_imagine.cache.manager'
+             - '@liip_imagine.filter.manager'
+        tags:
+            - { name: kernel.event_listener, event: sherlockode_sylius_faq.category.pre_create, method: uploadImage }
+            - { name: kernel.event_listener, event: sherlockode_sylius_faq.category.pre_update, method: uploadImage }
+            - { name: doctrine.event_listener, event: onFlush, lazy: true }
+            - { name: doctrine.event_listener, event: postFlush, lazy: true }
+
+    sherlockode_sylius_faq.image_uploader:
+        class: Sherlockode\SyliusFAQPlugin\Uploader\ImageUploader
+        arguments: 
+            - '@Sylius\Component\Core\Filesystem\Adapter\FilesystemAdapterInterface'
+            - '@Sylius\Component\Core\Generator\ImagePathGeneratorInterface'
+    
+    Sherlockode\SyliusFAQPlugin\Action\RemoveCategoryIconAction:
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@router'
+            - '@security.csrf.token_manager'
+            - '@sherlockode_sylius_faq.image_uploader'

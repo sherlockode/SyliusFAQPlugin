@@ -15,3 +15,9 @@ sherlockode_sylius_faq_admin_question:
         redirect: update
         grid: sherlockode_sylius_faq_admin_question
     type: sylius.resource
+
+sherlockode_sylius_faq_admin_category_remove_icon:
+    path: /categories/{id}/remove-icon
+    methods: [PUT]
+    defaults:
+        _controller: Sherlockode\SyliusFAQPlugin\Action\RemoveCategoryIconAction
