@@ -1,0 +1,44 @@
+sylius_grid:
+    grids:
+        sherlockode_sylius_faq_admin_category:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: Sherlockode\SyliusFAQPlugin\Entity\Category
+            fields:
+                id:
+                    type: string
+                    label: sylius.ui.id
+                name:
+                    type: string
+                    label: sylius.ui.name
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+        sherlockode_sylius_faq_admin_question:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: Sherlockode\SyliusFAQPlugin\Entity\Question
+            fields:
+                id:
+                    type: string
+                    label: sylius.ui.id
+                question:
+                    type: string
+                    label: sherlockode_sylius_faq.ui.question.question
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

@@ -1,0 +1,17 @@
+services:
+    sherlockode_sylius_faq_menu_listener:
+        class: Sherlockode\SyliusFAQPlugin\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+    app.faq_category_translation.form.type:
+        class: Sherlockode\SyliusFAQPlugin\Form\Type\CategoryTranslationType
+        tags:
+            - { name: form.type }
+        arguments: [ '%sherlockode_sylius_faq.model.category_translation.class%', [ 'sylius' ] ]
+
+    app.faq_question_translation.form.type:
+        class: Sherlockode\SyliusFAQPlugin\Form\Type\QuestionTranslationType
+        tags:
+            - { name: form.type }
+        arguments: [ '%sherlockode_sylius_faq.model.question_translation.class%', [ 'sylius' ] ]

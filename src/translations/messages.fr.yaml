@@ -1,0 +1,14 @@
+sherlockode_sylius_faq:
+    ui:
+        content: FAQ
+        categories: Catégories
+        questions: Questions
+        new_category: Nouvelle categorie
+        edit_category: Edition d'une catégorie
+        new_question: Nouvelle question
+        edit_question: Edition d'une question
+        category:
+            name: Nom de la catégorie
+        question:
+            question: Question
+            answer: Réponse

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Sherlockode\SyliusFAQPlugin\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @ORM\Entity
@@ -41,13 +41,18 @@ class Question implements ResourceInterface, TranslatableInterface
     /**
      * @var Collection|ChannelInterface[]
      *
-     * @ORM\OneToMany(targetEntity="Sylius\Component\Core\Model\Channel")
+     * @ORM\ManyToMany(targetEntity="Sylius\Component\Core\Model\Channel")
+     * @ORM\JoinTable(name="sherlockode_faq_questions_channels",
+     *     joinColumns={@ORM\JoinColumn(name="question_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="channel_id", referencedColumnName="id")}
+     * )
      */
     private $channels;
 
     public function __construct()
     {
         $this->initializeTranslationsCollection();
+        $this->channels = new ArrayCollection();
         $this->setPosition(1);
     }
 
@@ -120,9 +125,41 @@ class Question implements ResourceInterface, TranslatableInterface
     }
 
     /**
+     * @return Collection|ChannelInterface[]
+     */
+    public function getChannels(): Collection
+    {
+        return $this->channels;
+    }
+
+    /**
+     * @param ChannelInterface $channel
+     *
+     * @return $this
+     */
+    public function addChannel(ChannelInterface $channel): self
+    {
+        $this->channels->add($channel);
+
+        return $this;
+    }
+
+    /**
+     * @param ChannelInterface $channel
+     *
+     * @return $this
+     */
+    public function removeChannel(ChannelInterface $channel): self
+    {
+        $this->channels->removeElement($channel);
+
+        return $this;
+    }
+
+    /**
      * {@inheritdoc}
      */
-    protected function createTranslation(): TranslationInterface
+    protected function createTranslation(): QuestionTranslation
     {
         return new QuestionTranslation();
     }

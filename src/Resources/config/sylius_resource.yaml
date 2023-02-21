@@ -1,0 +1,20 @@
+sylius_resource:
+    resources:
+        sherlockode_sylius_faq.category:
+            driver: doctrine/orm
+            classes:
+                model: Sherlockode\SyliusFAQPlugin\Entity\Category
+                form: Sherlockode\SyliusFAQPlugin\Form\Type\CategoryType
+            translation:
+                classes:
+                    model: Sherlockode\SyliusFAQPlugin\Entity\CategoryTranslation
+                    form: Sherlockode\SyliusFAQPlugin\Form\Type\CategoryTranslationType
+        sherlockode_sylius_faq.question:
+            driver: doctrine/orm
+            classes:
+                model: Sherlockode\SyliusFAQPlugin\Entity\Question
+                form: Sherlockode\SyliusFAQPlugin\Form\Type\QuestionType
+            translation:
+                classes:
+                    model: Sherlockode\SyliusFAQPlugin\Entity\QuestionTranslation
+                    form: Sherlockode\SyliusFAQPlugin\Form\Type\QuestionTranslationType
