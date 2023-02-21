@@ -31,8 +31,10 @@ sylius_grid:
                     type: string
                     label: sylius.ui.id
                 question:
-                    type: string
+                    type: twig
                     label: sherlockode_sylius_faq.ui.question.question
+                    options:
+                        template: "@SherlockodeSyliusFAQPlugin/admin/Field/_question.html.twig"
             actions:
                 main:
                     create:

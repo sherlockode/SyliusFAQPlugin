@@ -11,7 +11,8 @@
     "require": {
         "ext-soap": "*",
         "php": "^8.0",
-        "sylius/sylius": "~1.12.0"
+        "sylius/sylius": "~1.12.0",
+        "friendsofsymfony/ckeditor-bundle": "^2.4"
     },
     "config": {
         "sort-packages": true

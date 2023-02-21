@@ -32,13 +32,6 @@ class Question implements ResourceInterface, TranslatableInterface
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="position", type="integer")
-     */
-    private $position;
-
-    /**
      * @var Collection|ChannelInterface[]
      *
      * @ORM\ManyToMany(targetEntity="Sylius\Component\Core\Model\Channel")
@@ -48,6 +41,21 @@ class Question implements ResourceInterface, TranslatableInterface
      * )
      */
     private $channels;
+
+    /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="Sherlockode\SyliusFAQPlugin\Entity\Category", inversedBy="questions")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $category;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
 
     public function __construct()
     {
@@ -62,6 +70,58 @@ class Question implements ResourceInterface, TranslatableInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return Collection|ChannelInterface[]
+     */
+    public function getChannels(): Collection
+    {
+        return $this->channels;
+    }
+
+    /**
+     * @param ChannelInterface $channel
+     *
+     * @return $this
+     */
+    public function addChannel(ChannelInterface $channel): self
+    {
+        $this->channels->add($channel);
+
+        return $this;
+    }
+
+    /**
+     * @param ChannelInterface $channel
+     *
+     * @return $this
+     */
+    public function removeChannel(ChannelInterface $channel): self
+    {
+        $this->channels->removeElement($channel);
+
+        return $this;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     *
+     * @return $this
+     */
+    public function setCategory(Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 
     /**
@@ -120,38 +180,6 @@ class Question implements ResourceInterface, TranslatableInterface
     public function setAnswer(?string $answer): self
     {
         $this->getTranslation()->setAnswer($answer);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|ChannelInterface[]
-     */
-    public function getChannels(): Collection
-    {
-        return $this->channels;
-    }
-
-    /**
-     * @param ChannelInterface $channel
-     *
-     * @return $this
-     */
-    public function addChannel(ChannelInterface $channel): self
-    {
-        $this->channels->add($channel);
-
-        return $this;
-    }
-
-    /**
-     * @param ChannelInterface $channel
-     *
-     * @return $this
-     */
-    public function removeChannel(ChannelInterface $channel): self
-    {
-        $this->channels->removeElement($channel);
 
         return $this;
     }

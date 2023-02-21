@@ -29,6 +29,7 @@ class CategoryType extends AbstractType
             ])
             ->add('channels', EntityType::class, [
                 'class' => Channel::class,
+                'label' => 'sherlockode_sylius_faq.ui.category.channels',
                 'by_reference' => false,
                 'multiple' => true,
                 'choice_label' => 'name',
