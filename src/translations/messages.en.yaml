@@ -11,8 +11,10 @@ sherlockode_sylius_faq:
             name: Category name
             icon: Category icon
             channels: Channels
+            position: Position
         question:
             category: Category
             question: Question
             answer: Answer
             channels: Channels
+            position: Position
