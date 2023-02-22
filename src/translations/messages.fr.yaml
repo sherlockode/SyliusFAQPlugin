@@ -9,6 +9,7 @@ sherlockode_sylius_faq:
         edit_question: Edition d'une question
         category:
             name: Nom de la catégorie
+            icon: Icône de la catégorie
         question:
             question: Question
             answer: Réponse

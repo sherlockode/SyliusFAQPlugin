@@ -9,6 +9,7 @@ sherlockode_sylius_faq:
         edit_question: Edit question
         category:
             name: Category name
+            icon: Category icon
         question:
             question: Question
             answer: Answer

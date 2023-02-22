@@ -3,6 +3,37 @@
     {{ translationForm(form) }}
 {% endblock %}
 
+{% block _category_icon_row %}
+    {% apply spaceless %}
+        <div class="field" id="add-avatar" style="margin-top: 20px">
+            <label>{{ label|trans }}</label>
+            {% set category = null %}
+            {% if (form.parent.vars.value is not null) %}
+                {% set category = form.parent.vars.value %}
+            {% endif %}
+            {% if category.iconPath|default(null) is not null %}
+                <img class="ui small bordered image" src="{{ category.iconPath|imagine_filter('sylius_small') }}" alt="" />
+            {% endif %}
+            <div class="ui hidden element">
+                {{ form_widget(form) }}
+            </div>
+            <div style="margin-top: 10px" >
+                <label for="{{ id }}" class="ui icon labeled button"><i class="cloud upload icon"></i> {{ 'sylius.ui.choose_file'|trans }}</label>
+            </div>
+            <div class="ui element">
+                {{- form_errors(form) -}}
+            </div>
+        </div>
+        {% if category.iconPath is not null %}
+            <button formaction="{{ path('sherlockode_sylius_faq_admin_category_remove_icon', {'id': app.request.attributes.get('id'), '_csrf_token': csrf_token(app.request.attributes.get('id'))}) }}" type="submit" class="ui icon red labeled button">
+                <i class="icon trash"></i> {{ 'sylius.ui.delete'|trans }}
+            </button>
+        {% endif %}
+        <div style="margin-bottom: 20px"></div>
+    {% endapply %}
+{% endblock %}
+
+
 {% block _question_translations_row %}
     {% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
     {{ translationForm(form) }}
