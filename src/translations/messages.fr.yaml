@@ -10,6 +10,9 @@ sherlockode_sylius_faq:
         category:
             name: Nom de la catégorie
             icon: Icône de la catégorie
+            channels: Channels
         question:
+            category: Catégorie
             question: Question
             answer: Réponse
+            channels: Channels
