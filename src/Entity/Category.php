@@ -21,6 +21,7 @@ class Category implements ResourceInterface, TranslatableInterface
 {
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
+        getTranslation as private doGetTranslation;
     }
 
     /**
@@ -236,5 +237,18 @@ class Category implements ResourceInterface, TranslatableInterface
     protected function createTranslation(): CategoryTranslation
     {
         return new CategoryTranslation();
+    }
+
+    /**
+     * @param string|null $locale
+     *
+     * @return CategoryTranslation
+     */
+    public function getTranslation(?string $locale = null): CategoryTranslation
+    {
+        /** @var CategoryTranslation $translation */
+        $translation = $this->doGetTranslation($locale);
+
+        return $translation;
     }
 }

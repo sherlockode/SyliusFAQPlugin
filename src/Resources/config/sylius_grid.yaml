@@ -5,6 +5,9 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: Sherlockode\SyliusFAQPlugin\Entity\Category
+                    repository:
+                        method: createListQueryBuilder
+                        arguments: [ "%locale%" ]
             sorting:
                 position: asc
             fields:
@@ -26,11 +29,20 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ translation.name ]
         sherlockode_sylius_faq_admin_question:
             driver:
                 name: doctrine/orm
                 options:
                     class: Sherlockode\SyliusFAQPlugin\Entity\Question
+                    repository:
+                        method: createListQueryBuilder
+                        arguments: [ "%locale%" ]
             sorting:
                 position: asc
             fields:
@@ -54,3 +66,9 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ translation.question ]
