@@ -5,10 +5,15 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: Sherlockode\SyliusFAQPlugin\Entity\Category
+            sorting:
+                position: asc
             fields:
-                id:
-                    type: string
-                    label: sylius.ui.id
+                position:
+                    type: twig
+                    label: sherlockode_sylius_faq.ui.category.position
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/position.html.twig"
                 name:
                     type: string
                     label: sylius.ui.name
@@ -26,10 +31,15 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: Sherlockode\SyliusFAQPlugin\Entity\Question
+            sorting:
+                position: asc
             fields:
-                id:
-                    type: string
-                    label: sylius.ui.id
+                position:
+                    type: twig
+                    label: sherlockode_sylius_faq.ui.question.position
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/position.html.twig"
                 question:
                     type: twig
                     label: sherlockode_sylius_faq.ui.question.question
