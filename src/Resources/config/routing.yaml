@@ -1,0 +1,5 @@
+sherlockode_sylius_plugin_faq:
+    path: /{_locale}/faq
+    methods: [GET]
+    defaults:
+        _controller: Sherlockode\SyliusFAQPlugin\Controller\FaqController::indexAction

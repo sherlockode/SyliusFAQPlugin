@@ -41,3 +41,9 @@ services:
             - '@router'
             - '@security.csrf.token_manager'
             - '@sherlockode_sylius_faq.image_uploader'
+
+    Sherlockode\SyliusFAQPlugin\Controller\FaqController:
+        calls:
+            - [setContainer, ['@service_container']]
+        tags:
+            - { name: controller.service_arguments }

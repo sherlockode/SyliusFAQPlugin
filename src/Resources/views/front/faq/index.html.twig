@@ -1,0 +1,97 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <h1 class="sherlockode-faq-title ui huge header">{{ 'sherlockode_sylius_faq.ui.title'|trans }}</h1>
+    <div class="sherlockode-faq-grid">
+        <div class="ui list sherlockode-faq-category">
+            {% for category in categories %}
+                {% if category.iconPath is not null %}
+                    {% set source_path = category.iconPath %}
+                    {% set original_path = source_path|imagine_filter('sherlockode_faq_category_icon') %}
+                {% endif %}
+
+                <button class="item ui button sherlockode-faq-btn-category {{ loop.index == 1 ? 'active' : '' }}" data-target="#faq-category-{{ category.id }}">
+                    {% if original_path is defined and original_path is not null %}
+                        <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                    {% endif %}
+                    <span>{{ category.name }}</span>
+                    <i class="angle right icon"></i>
+                </button>
+            {% endfor %}
+        </div>
+
+        <div class="sherlockode-faq-mobile-category">
+            {% if categories|length > 0 %}
+                {% set category = categories|first %}
+                {% if category.iconPath is not null %}
+                    {% set source_path = category.iconPath %}
+                    {% set original_path = source_path|imagine_filter('sherlockode_faq_category_icon') %}
+                {% endif %}
+                <button class="sherlockode-faq-category-mobile">
+                    {% if original_path is defined and original_path is not null %}
+                        <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                    {% endif %}
+                    {{ category.name }}
+                    <i class="angle right icon"></i>
+                </button>
+            {% endif %}
+        </div>
+
+        <div class="sherlockode-category-question">
+            {% for category in categories %}
+                <div id="faq-category-{{ category.id }}" class="sherlockode-category-question-items" {% if loop.index > 1 %}style="display: none"{% endif %}>
+                    {% for question in category.questions %}
+                        <h3 id="faq-question-answer-heading-{{ loop.index }}" class="sherlockode-faq-question-title">
+                            <button type="button" class="sherlockode-faq-btn-collapse" aria-expanded="false" aria-controls="faq-question-answer-{{ loop.index }}">
+                                {{ question.question }}
+                                <i class="angle down icon"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-question-answer-{{ loop.index }}" class="sherlockode-faq-answer" aria-labelledby="faq-question-answer-heading-{{ loop.index }}" style="height: 0px" data-collapsed="true">
+                            {{ question.answer|raw }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+    <div class="sherlockode-faq-modal-bg"></div>
+    <div class="sherlockode-faq-modal-category">
+        <button type="button" class="sherlockode-faq-modal-btn-close" data-animationdelay="200" aria-label="Close">
+            <i class="close icon"></i>
+        </button>
+        <ul>
+        {% for category in categories %}
+            {% if category.iconPath is not null %}
+                {% set source_path = category.iconPath %}
+                {% set original_path = source_path|imagine_filter('sherlockode_faq_category_icon') %}
+            {% endif %}
+            <li>
+                <button class="item ui button sherlockode-faq-btn-category {{ loop.index == 1 ? 'active' : '' }}" data-target="#faq-category-{{ category.id }}">
+                    {% if original_path is defined and original_path is not null %}
+                        <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                    {% endif %}
+                    <span>{{ category.name }}</span>
+                    <i class="angle right icon"></i>
+                </button>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/faq.css'} %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/front.js'} %}
+{% endblock %}

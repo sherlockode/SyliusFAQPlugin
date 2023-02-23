@@ -1,5 +1,6 @@
 sherlockode_sylius_faq:
     ui:
+        title: FAQ
         content: FAQ
         categories: Categories
         questions: Questions
