@@ -5,6 +5,9 @@ sherlockode_sylius_faq_admin_category:
         templates: "@SherlockodeSyliusFAQPlugin/admin/Crud"
         redirect: update
         grid: sherlockode_sylius_faq_admin_category
+        vars:
+            index:
+                icon: 'icon folder'
     type: sylius.resource
 
 sherlockode_sylius_faq_admin_question:
@@ -14,6 +17,9 @@ sherlockode_sylius_faq_admin_question:
         templates: "@SherlockodeSyliusFAQPlugin/admin/Crud"
         redirect: update
         grid: sherlockode_sylius_faq_admin_question
+        vars:
+            index:
+                icon: 'icon question circle outline'
     type: sylius.resource
 
 sherlockode_sylius_faq_admin_category_remove_icon:
