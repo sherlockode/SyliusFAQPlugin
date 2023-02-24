@@ -21,6 +21,7 @@ class Question implements ResourceInterface, TranslatableInterface
 {
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
+        getTranslation as private doGetTranslation;
     }
 
     /**
@@ -192,5 +193,18 @@ class Question implements ResourceInterface, TranslatableInterface
     protected function createTranslation(): QuestionTranslation
     {
         return new QuestionTranslation();
+    }
+
+    /**
+     * @param string|null $locale
+     *
+     * @return QuestionTranslation
+     */
+    public function getTranslation(?string $locale = null): QuestionTranslation
+    {
+        /** @var QuestionTranslation $translation */
+        $translation = $this->doGetTranslation($locale);
+
+        return $translation;
     }
 }

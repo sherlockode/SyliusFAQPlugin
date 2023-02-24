@@ -5,6 +5,7 @@ sylius_resource:
             classes:
                 model: Sherlockode\SyliusFAQPlugin\Entity\Category
                 form: Sherlockode\SyliusFAQPlugin\Form\Type\CategoryType
+                repository: Sherlockode\SyliusFAQPlugin\Repository\CategoryRepository
             translation:
                 classes:
                     model: Sherlockode\SyliusFAQPlugin\Entity\CategoryTranslation
@@ -14,6 +15,7 @@ sylius_resource:
             classes:
                 model: Sherlockode\SyliusFAQPlugin\Entity\Question
                 form: Sherlockode\SyliusFAQPlugin\Form\Type\QuestionType
+                repository: Sherlockode\SyliusFAQPlugin\Repository\QuestionRepository
             translation:
                 classes:
                     model: Sherlockode\SyliusFAQPlugin\Entity\QuestionTranslation
