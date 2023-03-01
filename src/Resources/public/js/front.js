@@ -33,17 +33,15 @@ window.addEventListener('load', function () {
   });
 
   function closeModal() {
-    let timer = closeModalBtn.getAttribute('data-animationdelay');
+    let modal = document.querySelector('.sherlockode-faq-modal-category');
 
-    if (!isNaN(timer)) {
-      document.body.classList.add('closing');
+    let onTransitionEnd = () => {
+      modal.removeEventListener('transitionend', onTransitionEnd);
+      document.body.classList.remove('closing', 'sherlockode-faq-modal-active');
+    };
 
-      setTimeout(() => {
-        document.body.classList.remove('closing', 'sherlockode-faq-modal-active');
-      }, timer);
-    } else {
-      document.body.classList.remove('sherlockode-faq-modal-active');
-    }
+    document.body.classList.add('closing');
+    modal.addEventListener('transitionend', onTransitionEnd);
   }
 
   function displayCategory(btn) {
