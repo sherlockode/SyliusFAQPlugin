@@ -16,7 +16,7 @@ class FaqController extends AbstractController
      */
     public function indexAction(EntityManagerInterface $em): Response
     {
-        $categories = $em->getRepository(Category::class)->findAll();
+        $categories = $em->getRepository(Category::class)->findBy(criteria: [], orderBy: ['position' => 'ASC']);
 
         return $this->render('@SherlockodeSyliusFAQPlugin/front/faq/index.html.twig', [
             'categories' => $categories
