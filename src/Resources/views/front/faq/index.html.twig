@@ -5,6 +5,7 @@
     <div class="sherlockode-faq-grid">
         <div class="ui list sherlockode-faq-category">
             {% for category in categories %}
+                {% set original_path = null %}
                 {% if category.iconPath is not null %}
                     {% set source_path = category.iconPath %}
                     {% set original_path = source_path|imagine_filter('sherlockode_faq_category_icon') %}
