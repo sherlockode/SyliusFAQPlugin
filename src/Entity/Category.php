@@ -47,6 +47,7 @@ class Category implements ResourceInterface, TranslatableInterface
     /**
      * @var Collection|Question[]
      *
+     * @ORM\OrderBy({"position": "ASC"})
      * @ORM\OneToMany(targetEntity="Sherlockode\SyliusFAQPlugin\Entity\Question", mappedBy="category")
      */
     private $questions;
