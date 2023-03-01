@@ -202,3 +202,8 @@ body.sherlockode-faq-modal-active:not(.closing) .sherlockode-faq-modal-category 
     transform: rotate(90deg);
     font-size: 14px;
 }
+
+.sherlockode-faq-category-icon-wrapper {
+    width: 25px;
+    height: 25px;
+}
