@@ -12,9 +12,11 @@
                 {% endif %}
 
                 <button class="item ui button sherlockode-faq-btn-category {{ loop.index == 1 ? 'active' : '' }}" data-target="#faq-category-{{ category.id }}">
-                    {% if original_path is defined and original_path is not null %}
-                        <img src="{{ original_path }}" alt="" width="25px" height="25px">
-                    {% endif %}
+                    <span class="sherlockode-faq-category-icon-wrapper">
+                        {% if original_path is defined and original_path is not null %}
+                            <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                        {% endif %}
+                    </span>
                     <span>{{ category.name }}</span>
                     <i class="angle right icon"></i>
                 </button>
@@ -77,9 +79,11 @@
                 {% endif %}
                 <li>
                     <button class="item ui button sherlockode-faq-btn-category {{ loop.index == 1 ? 'active' : '' }}" data-target="#faq-category-{{ category.id }}">
-                        {% if original_path is defined and original_path is not null %}
-                            <img src="{{ original_path }}" alt="" width="25px" height="25px">
-                        {% endif %}
+                        <span class="sherlockode-faq-category-icon-wrapper">
+                            {% if original_path is defined and original_path is not null %}
+                                <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                            {% endif %}
+                        </span>
                         <span>{{ category.name }}</span>
                         <i class="angle right icon"></i>
                     </button>
