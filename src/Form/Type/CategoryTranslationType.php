@@ -20,7 +20,7 @@ class CategoryTranslationType extends AbstractResourceType
             ->add('name', TextType::class, [
                 'label' => 'sherlockode_sylius_faq.ui.category.name',
                 'constraints' => [
-                    new Length(min: 2, max: 255, groups: ['sylius'])
+                    new Length(min: 2, max: 255, groups: ['sylius']),
                 ],
             ])
         ;

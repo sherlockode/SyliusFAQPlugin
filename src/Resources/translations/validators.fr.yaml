@@ -1,0 +1,5 @@
+sherlockode_faq:
+    category:
+        translation_min: Vous devez saisir au moins une traduction pour cette catégorie. Laisser vide les traductions de la categorie qui ne concerne pas la langue
+    question:
+        translation_min: Vous devez saisir au moins une traduction pour cette question. Laisser vide les traductions de la question qui ne concerne pas la langue
