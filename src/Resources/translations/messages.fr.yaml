@@ -3,11 +3,11 @@ sherlockode_sylius_faq:
         title: FAQ
         content: FAQ
         categories: Catégories
-        questions: Questions
+        questions: Questions / Réponses
         new_category: Nouvelle categorie
         edit_category: Edition d'une catégorie
-        new_question: Nouvelle question
-        edit_question: Edition d'une question
+        new_question: Nouvelle question / réponse
+        edit_question: Edition d'une question / réponse
         category:
             name: Nom de la catégorie
             icon: Icône de la catégorie

@@ -3,11 +3,11 @@ sherlockode_sylius_faq:
         title: FAQ
         content: FAQ
         categories: Categories
-        questions: Questions
+        questions: Questions / Answers
         new_category: New category
         edit_category: Edit category
-        new_question: New question
-        edit_question: Edit question
+        new_question: New question / answer
+        edit_question: Edit question / answer
         category:
             name: Category name
             icon: Category icon
