@@ -47,3 +47,11 @@ services:
             - [setContainer, ['@service_container']]
         tags:
             - { name: controller.service_arguments }
+
+    Sherlockode\SyliusFAQPlugin\Twig\Extension\TranslationExtension:
+        tags:
+            - { name: twig.extension }
+
+    Sherlockode\SyliusFAQPlugin\Twig\TranslationRuntime:
+        tags:
+            - { name: twig.runtime }
