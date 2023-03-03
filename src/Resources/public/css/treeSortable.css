@@ -1,0 +1,120 @@
+.tree-sortable-wrapper ul {
+    list-style: none;
+}
+
+.tree-branch .branch-editor {
+    display: none;
+}
+
+.tree-branch {
+    margin-bottom: 0;
+    position: relative;
+    user-select: none;
+    max-height: 58px;
+}
+
+.tree-branch > .contents .branch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    min-height: 20px;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    padding: 10px 15px;
+    height: auto;
+    gap: 12px;
+
+    line-height: 2.3076923;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.tree-branch > .contents .branch-wrapper .left-sidebar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    max-width: 280px;
+    width: 100%;
+}
+
+.right-sidebar {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.branch-wrapper:hover .right-sidebar {
+    opacity: 1;
+}
+
+.tree-branch > .contents .branch-wrapper .left-sidebar {
+    cursor: pointer;
+}
+
+.tree-branch > .contents {
+    clear: both;
+    line-height: 1.5;
+    position: relative;
+    margin: 10px 0 0;
+}
+
+.contents .branch-drag-handler {
+    cursor: move;
+}
+
+.branch-drag-handler .icon {
+    color: #504e4e;
+    margin-right: 5px;
+}
+
+.sortable-placeholder {
+    border: 1px dashed rgb(63, 63, 63);
+    height: 35px;
+    max-width: 450px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.tree-branch.ui-sortable-helper .contents {
+    margin-top: 0;
+}
+
+.tree-branch.ui-sortable-helper .children-bus .contents {
+    margin-top: 10px;
+}
+
+.tree-branch .children-bus:empty {
+    display: none;
+}
+
+.tree-branch {
+    margin-left: var(--tree-sortable-branch-left-shift);
+}
+.children-bus {
+    margin-left: var(--tree-sortable-children-left-shift);
+}
+
+.ui-sortable-placeholder {
+    margin-left: var(--tree-sortable-branch-left-shift);
+}
+
+.branch-path {
+    display: block;
+    position: absolute;
+    width: var(--tree-sortable-depth);
+    min-height: 72px;
+    bottom: 50%;
+    left: -12px;
+    border: 2px solid #565656;
+    border-top: 0;
+    border-right: 0;
+    padding: 4px 0 0;
+    padding-top: 3px;
+    border-bottom-left-radius: 6px;
+    z-index: -1;
+}
