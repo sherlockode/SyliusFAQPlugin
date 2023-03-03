@@ -105,7 +105,7 @@ function TreeSortablePlugin(options) {
             return v.toString(16);
         });
     };
-    this.createBranch = function ({ id, parent_id, title, level }) {
+    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null }) {
         const {
             branchSelector,
             branchPathSelector,
@@ -115,10 +115,14 @@ function TreeSortablePlugin(options) {
             dataAttributes: { id: idAttr, parent: parentAttr, level: levelAttr },
         } = self.options;
 
+        const minLvlAttr = null === min_level ? '' : 'data-minlevel="' + min_level + '"';
+        const maxLvlAttr = null === max_level ? '' : 'data-maxlevel="' + max_level + '"';
+
         return `
 		<li id="${id}" class="${self.cleanSelector(
             branchSelector
-        )} ${levelPrefix}-${level}" data-${idAttr}="${id}" data-${parentAttr}="${parent_id}" data-${levelAttr}="${level}">
+        )} ${levelPrefix}-${level}" data-${idAttr}="${id}" data-${parentAttr}="${parent_id}" data-${levelAttr}="${level}"
+		    ${minLvlAttr} ${maxLvlAttr}>
             <div class="contents">
                 <span class="${self.cleanSelector(branchPathSelector)}"></span>
                 <div class="branch-wrapper">
@@ -563,6 +567,10 @@ function TreeSortablePlugin(options) {
 
                 let prevBranchLevel = prevBranch.getBranchLevel();
                 upperBound = Math.min(prevBranchLevel + 1, maxLevel);
+                upperBound = Math.min(
+                    upperBound,
+                    Number.isInteger(ui.item.data('maxlevel')) ? ui.item.data('maxlevel') : upperBound
+                );
 
                 /**
                  * Calculate the lower bound. The lower bound would be,
@@ -584,6 +592,10 @@ function TreeSortablePlugin(options) {
                 }
 
                 lowerBound = Math.max(1, placeholderLevel);
+                lowerBound = Math.max(
+                    lowerBound,
+                    Number.isInteger(ui.item.data('minlevel')) ? ui.item.data('minlevel') : lowerBound
+                );
 
                 /**
                  * Calculate the position which is the current helper offset left
@@ -595,7 +607,12 @@ function TreeSortablePlugin(options) {
                  */
                 let position = Math.max(0, currentBranchEdge - treeEdge);
                 let newLevel = Math.floor(position / depth) + 1;
+
                 newLevel = Math.max(lowerBound, Math.min(newLevel, upperBound));
+                newLevel = Math.min(
+                    newLevel,
+                    Number.isInteger(ui.item.data('maxlevel')) ? ui.item.data('maxlevel') : newLevel
+                );
 
                 if (canSwapItems(ui)) {
                     let nextBranch = ui.placeholder.nextBranch();
