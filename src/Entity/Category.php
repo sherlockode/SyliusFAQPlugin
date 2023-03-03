@@ -165,7 +165,7 @@ class Category implements ResourceInterface, TranslatableInterface
      *
      * @return $this
      */
-    public function setPosition(int $position): self
+    public function setPosition(?int $position): self
     {
         $this->position = $position;
 

@@ -1,0 +1,5 @@
+sherlockode_faq:
+    category:
+        translation_min: You must enter at least one translation for this category. Leave empty if this category does not concern the language
+    question:
+        translation_min: You must enter at least one translation for this question. Leave empty if this question does not concern the language
