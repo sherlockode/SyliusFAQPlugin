@@ -43,15 +43,6 @@
     width: 100%;
 }
 
-.right-sidebar {
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.branch-wrapper:hover .right-sidebar {
-    opacity: 1;
-}
-
 .tree-branch > .contents .branch-wrapper .left-sidebar {
     cursor: pointer;
 }
@@ -117,4 +108,12 @@
     padding-top: 3px;
     border-bottom-left-radius: 6px;
     z-index: -1;
+}
+
+#sherlockode-faq-category-tree .right-sidebar .ui.button {
+    padding: 8px 12px;
+}
+
+#sherlockode-faq-category-tree .right-sidebar .ui.button:not(.icon) > .icon:not(.button):not(.dropdown) {
+    margin: 0;
 }

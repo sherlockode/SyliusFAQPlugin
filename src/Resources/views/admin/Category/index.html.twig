@@ -1,0 +1,21 @@
+{% extends '@SyliusAdmin/Crud/index.html.twig' %}
+
+{% block content %}
+    {{ sylius_template_event([event_prefix, 'sherlockode_faq.admin.category.index'], _context) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/app.css'} %}
+    {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/treeSortable.css'} %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/treeSortablePlugin.js'} %}
+    {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/treeSortableIndex.js'} %}
+{% endblock %}

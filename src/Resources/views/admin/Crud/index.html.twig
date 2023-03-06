@@ -1,23 +1,10 @@
 {% extends '@SyliusAdmin/Crud/index.html.twig' %}
 
-{% block content %}
-    <div class="tree-sortable-wrapper">
-        <ul id="sherlockode-faq-category-tree" data-json="{{ sherlockode_faq_generate_tree(data) }}"></ul>
-    </div>
-{% endblock %}
-
 {% block stylesheets %}
     {{ parent() }}
 
-    <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
     {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/app.css'} %}
-    {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/treeSortable.css'} %}
+
+    {{ sylius_template_event([event_prefix ~ '.stylesheets', 'sylius.admin.index.stylesheets'], { 'metadata': metadata }) }}
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/treeSortablePlugin.js'} %}
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/treeSortableIndex.js'} %}
-{% endblock %}

@@ -61,5 +61,8 @@ services:
             - { name: twig.extension }
 
     Sherlockode\SyliusFAQPlugin\Twig\TreeRuntime:
+        arguments:
+            - '@router'
+            - '@twig'
         tags:
             - { name: twig.runtime }
