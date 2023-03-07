@@ -23,7 +23,9 @@ class TreeRuntime implements RuntimeExtensionInterface
                 'id' => 'category_' . $category->getId(),
                 'title' => $category->getName(),
                 'parent_id' => 0,
-                'level' => 1
+                'level' => 1,
+                'min_level' => 1,
+                'max_level' => 1,
             ];
 
             foreach ($category->getQuestions() as $question) {
@@ -33,7 +35,9 @@ class TreeRuntime implements RuntimeExtensionInterface
                     'id' => 'question_' . $question->getId(),
                     'title' => $question->getQuestion(),
                     'parent_id' => 'category_' . $category->getId(),
-                    'level' => 2
+                    'level' => 2,
+                    'min_level' => 2,
+                    'max_level' => 2,
                 ];
             }
 
