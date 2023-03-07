@@ -47,6 +47,15 @@ services:
             - [setContainer, ['@service_container']]
         tags:
             - { name: controller.service_arguments }
+                
+    Sherlockode\SyliusFAQPlugin\Controller\Admin\ResourceController:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@Sherlockode\SyliusFAQPlugin\Manager\ResourceManager'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+        tags:
+            - { name: controller.service_arguments }
 
     Sherlockode\SyliusFAQPlugin\Twig\Extension\TranslationExtension:
         tags:
@@ -66,3 +75,7 @@ services:
             - '@twig'
         tags:
             - { name: twig.runtime }
+
+    Sherlockode\SyliusFAQPlugin\Manager\ResourceManager:
+        arguments:
+            - '@doctrine.orm.entity_manager'

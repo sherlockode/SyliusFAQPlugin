@@ -12,3 +12,9 @@ sherlockode_sylius_faq_admin_question_delete:
         _sylius:
             redirect:
                 route: sherlockode_sylius_faq_admin_category_index
+
+sherlockode_sylius_faq_resource_order:
+    path: /admin/faq/resources
+    methods: [ POST ]
+    defaults:
+        _controller: Sherlockode\SyliusFAQPlugin\Controller\Admin\ResourceController::updateResourcesOrderAction
