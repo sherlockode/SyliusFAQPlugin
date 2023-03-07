@@ -663,6 +663,11 @@ function TreeSortablePlugin(options) {
             stop(_, ui) {
                 $(`${branchSelector}:not(${levelPrefix}-1) ${branchPathSelector}`).show();
 
+                let prevBranch = ui.item.prev();
+                if (ui.item.length > 0 && ui.item.data('minlevel') > 1 && prevBranch.length === 0) {
+                    $(this).sortable('cancel');
+                }
+
                 /**
                  * Place the children after the sorted item,
                  * and clear the children bus.
