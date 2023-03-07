@@ -2,7 +2,7 @@ sherlockode_sylius_faq_admin_category:
     resource: |
         alias: sherlockode_sylius_faq.category
         section: admin
-        templates: "@SherlockodeSyliusFAQPlugin/admin/Crud"
+        templates: "@SherlockodeSyliusFAQPlugin/admin/Category"
         redirect: update
         grid: sherlockode_sylius_faq_admin_category
         vars:

@@ -12,4 +12,6 @@ $(document).ready(function () {
   const content = data.map(leftSortable.createBranch);
   leftTree.html(content);
   leftSortable.run();
+
+  $('body').find('[data-requires-confirmation]').requireConfirmation();
 });

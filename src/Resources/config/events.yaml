@@ -1,0 +1,25 @@
+sylius_ui:
+    events:
+        sherlockode_faq.admin.category.index:
+            blocks:
+                before_header_legacy:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 25
+                    context:
+                        postfix: index.before_header
+                header:
+                    template: "@SyliusAdmin/Crud/Index/_header.html.twig"
+                    priority: 20
+                after_header_legacy:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 15
+                    context:
+                        postfix: index.after_header
+                content:
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/_content.html.twig"
+                    priority: 10
+                after_content:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 5
+                    context:
+                        postfix: index.after_content

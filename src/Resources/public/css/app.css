@@ -5,3 +5,11 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+
+.tree-sortable-wrapper {
+    margin: 40px 0;
+}
+
+.tree-sortable-wrapper > ul {
+    padding-left: 0;
+}

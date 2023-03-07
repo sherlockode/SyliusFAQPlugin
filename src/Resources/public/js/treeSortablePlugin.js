@@ -105,7 +105,7 @@ function TreeSortablePlugin(options) {
             return v.toString(16);
         });
     };
-    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null }) {
+    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null, edit_path = null, delete_form = null }) {
         const {
             branchSelector,
             branchPathSelector,
@@ -117,6 +117,15 @@ function TreeSortablePlugin(options) {
 
         const minLvlAttr = null === min_level ? '' : 'data-minlevel="' + min_level + '"';
         const maxLvlAttr = null === max_level ? '' : 'data-maxlevel="' + max_level + '"';
+        let editBtn = deleteBtn = '';
+
+        if (null !== edit_path) {
+          editBtn = `<a href="${edit_path}" class="ui icon button"><i class="icon pencil"></i></a>`;
+        }
+
+        if (null !== delete_form) {
+          deleteBtn = delete_form;
+        }
 
         return `
 		<li id="${id}" class="${self.cleanSelector(
@@ -131,6 +140,10 @@ function TreeSortablePlugin(options) {
                             <i class="expand arrows alternate icon"></i>
                         </div>
                         <span class="branch-title">${title}</span>
+                    </div>
+                    <div class="right-sidebar ui buttons">
+                        ${editBtn}
+                        ${deleteBtn}
                     </div>
                 </div>
             </div>
