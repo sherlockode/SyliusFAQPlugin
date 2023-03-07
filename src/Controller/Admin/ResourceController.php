@@ -54,12 +54,12 @@ class ResourceController extends AbstractController
             foreach ($resources as $key => $resource) {
                 /** @var Category $category */
                 $category = $resource['category'];
-                $category->setPosition($key);
+                $category->setPosition($key + 1);
 
                 /** @var Question $question */
                 foreach ($resource['questions'] as $questionKey => $question) {
                     $question->setCategory($category);
-                    $question->setPosition($questionKey);
+                    $question->setPosition($questionKey + 1);
                 }
             }
 
