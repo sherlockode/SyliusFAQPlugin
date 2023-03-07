@@ -55,3 +55,11 @@ services:
     Sherlockode\SyliusFAQPlugin\Twig\TranslationRuntime:
         tags:
             - { name: twig.runtime }
+
+    Sherlockode\SyliusFAQPlugin\Twig\Extension\TreeExtension:
+        tags:
+            - { name: twig.extension }
+
+    Sherlockode\SyliusFAQPlugin\Twig\TreeRuntime:
+        tags:
+            - { name: twig.runtime }
