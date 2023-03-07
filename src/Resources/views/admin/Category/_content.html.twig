@@ -1,3 +1,8 @@
 <div class="tree-sortable-wrapper">
     <ul id="sherlockode-faq-category-tree" data-json="{{ sherlockode_faq_generate_tree(data) }}"></ul>
 </div>
+
+<form action="{{ path('sherlockode_sylius_faq_resource_order') }}" method="post">
+    <input type="hidden" name="resource_order" id="sherlockode-faq-resource-order">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('sherlockode-faq-category-tree') }}" />
+</form>
