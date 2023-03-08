@@ -3,6 +3,9 @@
 namespace Sherlockode\SyliusFAQPlugin\Twig;
 
 use Sherlockode\SyliusFAQPlugin\Entity\Category;
+use Sherlockode\SyliusFAQPlugin\Entity\CategoryTranslation;
+use Sherlockode\SyliusFAQPlugin\Entity\Question;
+use Sherlockode\SyliusFAQPlugin\Entity\QuestionTranslation;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 use Twig\Extension\RuntimeExtensionInterface;
@@ -42,7 +45,7 @@ class TreeRuntime implements RuntimeExtensionInterface
         foreach ($categories as $category) {
             $tree[$id] = [
                 'id' => 'category_' . $category->getId(),
-                'title' => $category->getName(),
+                'title' => $this->getDefaultLabel($category),
                 'parent_id' => 0,
                 'level' => 1,
                 'min_level' => 1,
@@ -60,7 +63,7 @@ class TreeRuntime implements RuntimeExtensionInterface
 
                 $tree[$id] = [
                     'id' => 'question_' . $question->getId(),
-                    'title' => $question->getQuestion(),
+                    'title' => $this->getDefaultLabel($category),
                     'parent_id' => 'category_' . $category->getId(),
                     'level' => 2,
                     'min_level' => 2,
@@ -85,13 +88,56 @@ class TreeRuntime implements RuntimeExtensionInterface
      *
      * @return array
      */
-    private function getLocaleCodes(iterable $translations) {
+    private function getLocaleCodes(iterable $translations): array
+    {
         $codes = [];
 
         foreach ($translations as $translation) {
+            if ($translation instanceof CategoryTranslation && null === $translation->getName()) {
+                continue;
+            }
+
+            if ($translation instanceof QuestionTranslation && null === $translation->getQuestion()) {
+                continue;
+            }
+
             $codes[] = strtolower(substr(strrchr($translation->getLocale(), '_'), 1));
         }
 
         return $codes;
+    }
+
+    /**
+     * @param $resource
+     *
+     * @return string|null
+     */
+    private function getDefaultLabel($resource): ?string
+    {
+        $label = null;
+
+        if ($resource instanceof Category) {
+            $label = $resource->getName();
+
+            if (null === $label) {
+                $translation = $resource->getTranslations()->first();
+                if (false !== $translation) {
+                    $label = $translation->getName();
+                }
+            }
+        }
+
+        if ($resource instanceof Question) {
+            $label = $resource->getQuestion();
+
+            if (null === $label) {
+                $translation = $resource->getTranslations()->first();
+                if (false !== $translation) {
+                    $label = $translation->getQuestion();
+                }
+            }
+        }
+
+        return $label;
     }
 }
