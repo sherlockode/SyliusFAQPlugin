@@ -1,3 +1,7 @@
+:root {
+    --tree-max-width: 800px;
+}
+
 .tree-sortable-wrapper ul {
     list-style: none;
 }
@@ -18,7 +22,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 800px;
+    max-width: var(--tree-max-width);
     background: #fff;
     border: 1px solid #fff;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
@@ -42,10 +46,6 @@
     width: 100%;
 }
 
-.tree-branch > .contents .branch-wrapper .left-sidebar {
-    cursor: pointer;
-}
-
 .tree-branch > .contents {
     clear: both;
     line-height: 1.5;
@@ -57,16 +57,11 @@
     cursor: move;
 }
 
-.branch-drag-handler .icon {
-    color: #504e4e;
-    margin-right: 5px;
-}
-
 .sortable-placeholder {
     border: 1px dashed rgb(63, 63, 63);
     height: 35px;
-    max-width: 450px;
     width: 100%;
+    max-width: var(--tree-max-width);
     margin-top: 10px;
 }
 
