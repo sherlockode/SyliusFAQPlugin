@@ -141,7 +141,7 @@ function TreeSortablePlugin(options) {
                 <div class="branch-wrapper">
                     <div class="left-sidebar">
                         <div class="${self.cleanSelector(dragHandlerSelector)}">
-                            <i class="expand arrows alternate icon"></i>
+                            <i class="alternate icon"></i>
                         </div>
                         <span class="branch-title">${title}</span>
                     </div>
