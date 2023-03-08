@@ -95,6 +95,10 @@ class CategoryListener
                 continue;
             }
 
+            if ($entity->getIconPath() === null) {
+                continue;
+            }
+
             if (!in_array($entity->getIconPath(), $this->imagesToDelete, true)) {
                 $this->imagesToDelete[] = $entity->getIconPath();
             }
