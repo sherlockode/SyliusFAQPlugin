@@ -8,7 +8,7 @@ sylius_ui:
                     context:
                         postfix: index.before_header
                 header:
-                    template: "@SyliusAdmin/Crud/Index/_header.html.twig"
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/_header.html.twig"
                     priority: 20
                 after_header_legacy:
                     template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
