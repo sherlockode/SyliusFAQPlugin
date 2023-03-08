@@ -105,7 +105,7 @@ function TreeSortablePlugin(options) {
             return v.toString(16);
         });
     };
-    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null, edit_path = null, delete_form = null, locales = [] }) {
+    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null, edit_path = null, delete_form = null, locales = [], nb_question = 0 }) {
         const {
             branchSelector,
             branchPathSelector,
@@ -127,7 +127,7 @@ function TreeSortablePlugin(options) {
           deleteBtn = delete_form;
         }
 
-        if (1 === level) {
+        if (1 === level && nb_question > 0) {
           displayBtn = `<button class="ui icon button sherlockode-faq-category-show-question open" type="button"><i class="icon"></i></button>`;
         }
 
