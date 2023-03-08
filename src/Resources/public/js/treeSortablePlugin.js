@@ -105,7 +105,7 @@ function TreeSortablePlugin(options) {
             return v.toString(16);
         });
     };
-    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null, edit_path = null, delete_form = null }) {
+    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null, edit_path = null, delete_form = null, locales = [] }) {
         const {
             branchSelector,
             branchPathSelector,
@@ -117,7 +117,7 @@ function TreeSortablePlugin(options) {
 
         const minLvlAttr = null === min_level ? '' : 'data-minlevel="' + min_level + '"';
         const maxLvlAttr = null === max_level ? '' : 'data-maxlevel="' + max_level + '"';
-        let editBtn = deleteBtn = displayBtn = '';
+        let editBtn = deleteBtn = displayBtn = localeFlags = '';
 
         if (null !== edit_path) {
           editBtn = `<a href="${edit_path}" class="ui icon button"><i class="icon pencil"></i></a>`;
@@ -130,6 +130,10 @@ function TreeSortablePlugin(options) {
         if (1 === level) {
           displayBtn = `<button class="ui icon button sherlockode-faq-category-show-question open" type="button"><i class="icon"></i></button>`;
         }
+
+        locales.forEach((el) => {
+          localeFlags += `<i class="${el} flag"></i>`;
+        });
 
         return `
 		<li id="${id}" class="${self.cleanSelector(
@@ -145,6 +149,7 @@ function TreeSortablePlugin(options) {
                         </div>
                         <span class="branch-title">${title}</span>
                     </div>
+                    <div class="locales">${localeFlags}</div>
                     <div class="right-sidebar ui buttons">
                         ${displayBtn}
                         ${editBtn}
