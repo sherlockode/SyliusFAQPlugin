@@ -13,3 +13,15 @@
 .tree-sortable-wrapper > ul {
     padding-left: 0;
 }
+
+.sherlockode-faq-category-show-question .icon::before {
+    content: "\f078";
+}
+
+.sherlockode-faq-category-show-question.open .icon::before {
+    content: "\f077";
+}
+
+#sherlockode-faq-category-tree li.hide {
+    display: none;
+}

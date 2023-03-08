@@ -30,4 +30,19 @@ $(document).ready(function () {
   });
 
   $('body').find('[data-requires-confirmation]').requireConfirmation();
+  tree.on('click', '.sherlockode-faq-category-show-question', function() {
+    $(this).toggleClass('open');
+    hideQuestions($(this).closest('li').next());
+  });
+
+  function hideQuestions(el) {
+    if (false === el.is('li')) {
+      return;
+    }
+
+    if(el.data('level') === 2) {
+      el.toggleClass('hide');
+      hideQuestions(el.next());
+    }
+  }
 });
