@@ -117,7 +117,7 @@ function TreeSortablePlugin(options) {
 
         const minLvlAttr = null === min_level ? '' : 'data-minlevel="' + min_level + '"';
         const maxLvlAttr = null === max_level ? '' : 'data-maxlevel="' + max_level + '"';
-        let editBtn = deleteBtn = '';
+        let editBtn = deleteBtn = displayBtn = '';
 
         if (null !== edit_path) {
           editBtn = `<a href="${edit_path}" class="ui icon button"><i class="icon pencil"></i></a>`;
@@ -125,6 +125,10 @@ function TreeSortablePlugin(options) {
 
         if (null !== delete_form) {
           deleteBtn = delete_form;
+        }
+
+        if (1 === level) {
+          displayBtn = `<button class="ui icon button sherlockode-faq-category-show-question open" type="button"><i class="icon"></i></button>`;
         }
 
         return `
@@ -142,6 +146,7 @@ function TreeSortablePlugin(options) {
                         <span class="branch-title">${title}</span>
                     </div>
                     <div class="right-sidebar ui buttons">
+                        ${displayBtn}
                         ${editBtn}
                         ${deleteBtn}
                     </div>
