@@ -47,6 +47,7 @@ class TreeRuntime implements RuntimeExtensionInterface
                 'level' => 1,
                 'min_level' => 1,
                 'max_level' => 1,
+                'nb_question' => $category->getQuestions()->count(),
                 'locales' => $this->getLocaleCodes($category->getTranslations()),
                 'edit_path' => $this->urlGenerator->generate('sherlockode_sylius_faq_admin_category_update', ['id' => $category->getId()]),
                 'delete_form' => $this->twig->render('@SherlockodeSyliusFAQPlugin/admin/Grid/Action/delete.html.twig', [
