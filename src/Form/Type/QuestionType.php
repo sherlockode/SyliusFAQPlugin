@@ -9,11 +9,9 @@ use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Sylius\Component\Core\Model\Channel;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Count;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class QuestionType extends AbstractType
 {
@@ -27,12 +25,6 @@ class QuestionType extends AbstractType
                 'label' => 'sherlockode_sylius_faq.ui.question.category',
                 'class' => Category::class,
                 'choice_label' => 'name',
-            ])
-            ->add('position', NumberType::class, [
-                'label' => 'sherlockode_sylius_faq.ui.question.position',
-                'constraints' => [
-                    new NotBlank(groups: ['sylius']),
-                ],
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => QuestionTranslationType::class,
