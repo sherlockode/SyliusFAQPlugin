@@ -33,3 +33,9 @@
 #sherlockode-faq-category-tree li[data-level="2"] .branch-drag-handler .icon::before {
     content: "\f059";
 }
+
+#sherlockode-faq-category-tree .locales {
+    width: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
+}

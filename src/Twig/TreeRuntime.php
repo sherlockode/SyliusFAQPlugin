@@ -47,6 +47,7 @@ class TreeRuntime implements RuntimeExtensionInterface
                 'level' => 1,
                 'min_level' => 1,
                 'max_level' => 1,
+                'locales' => $this->getLocaleCodes($category->getTranslations()),
                 'edit_path' => $this->urlGenerator->generate('sherlockode_sylius_faq_admin_category_update', ['id' => $category->getId()]),
                 'delete_form' => $this->twig->render('@SherlockodeSyliusFAQPlugin/admin/Grid/Action/delete.html.twig', [
                     'path' => $this->urlGenerator->generate('sherlockode_sylius_faq_admin_category_delete', ['id' => $category->getId()]),
@@ -64,6 +65,7 @@ class TreeRuntime implements RuntimeExtensionInterface
                     'level' => 2,
                     'min_level' => 2,
                     'max_level' => 2,
+                    'locales' => $this->getLocaleCodes($question->getTranslations()),
                     'edit_path' => $this->urlGenerator->generate('sherlockode_sylius_faq_admin_question_update', ['id' => $question->getId()]),
                     'delete_form' => $this->twig->render('@SherlockodeSyliusFAQPlugin/admin/Grid/Action/delete.html.twig', [
                         'path' => $this->urlGenerator->generate('sherlockode_sylius_faq_admin_question_delete', ['id' => $question->getId()]),
@@ -76,5 +78,20 @@ class TreeRuntime implements RuntimeExtensionInterface
         }
 
         return json_encode($tree);
+    }
+
+    /**
+     * @param iterable $translations
+     *
+     * @return array
+     */
+    private function getLocaleCodes(iterable $translations) {
+        $codes = [];
+
+        foreach ($translations as $translation) {
+            $codes[] = strtolower(substr(strrchr($translation->getLocale(), '_'), 1));
+        }
+
+        return $codes;
     }
 }
