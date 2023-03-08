@@ -26,11 +26,11 @@
     display: none;
 }
 
-#sherlockode-faq-category-tree li[data-level="1"] .branch-drag-handler .icon::before {
+#sherlockode-faq-category-tree li[data-level="1"] .left-sidebar .icon::before {
     content: "\f07b";
 }
 
-#sherlockode-faq-category-tree li[data-level="2"] .branch-drag-handler .icon::before {
+#sherlockode-faq-category-tree li[data-level="2"] .left-sidebar .icon::before {
     content: "\f059";
 }
 

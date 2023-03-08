@@ -142,9 +142,9 @@ function TreeSortablePlugin(options) {
 		    ${minLvlAttr} ${maxLvlAttr}>
             <div class="contents">
                 <span class="${self.cleanSelector(branchPathSelector)}"></span>
-                <div class="branch-wrapper">
+                <div class="branch-wrapper ${self.cleanSelector(dragHandlerSelector)}">
                     <div class="left-sidebar">
-                        <div class="${self.cleanSelector(dragHandlerSelector)}">
+                        <div>
                             <i class="alternate icon"></i>
                         </div>
                         <span class="branch-title">${title}</span>
