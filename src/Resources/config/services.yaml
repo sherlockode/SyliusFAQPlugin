@@ -16,7 +16,7 @@ services:
             - { name: form.type }
         arguments: [ '%sherlockode_sylius_faq.model.question_translation.class%', [ 'sylius' ] ]
 
-    sherlockode_sylius_faq.listener.category_image_uploader:
+    sherlockode_sylius_faq.listener.category:
         class: Sherlockode\SyliusFAQPlugin\EventListener\CategoryListener
         arguments: 
              - '@sherlockode_sylius_faq.image_uploader'
@@ -27,6 +27,12 @@ services:
             - { name: kernel.event_listener, event: sherlockode_sylius_faq.category.pre_update, method: uploadImage }
             - { name: doctrine.event_listener, event: onFlush, lazy: true }
             - { name: doctrine.event_listener, event: postFlush, lazy: true }
+            - { name: doctrine.event_listener, event: prePersist, lazy: true }
+
+    sherlockode_sylius_faq.listener.question:
+        class: Sherlockode\SyliusFAQPlugin\EventListener\QuestionListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist, lazy: true }
 
     sherlockode_sylius_faq.image_uploader:
         class: Sherlockode\SyliusFAQPlugin\Uploader\ImageUploader
