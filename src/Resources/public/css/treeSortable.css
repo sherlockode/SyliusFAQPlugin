@@ -104,6 +104,12 @@
     z-index: -1;
 }
 
+.branch-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 #sherlockode-faq-category-tree .right-sidebar .ui.button {
     padding: 8px 12px;
 }
