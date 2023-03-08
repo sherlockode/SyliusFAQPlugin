@@ -24,6 +24,7 @@ sylius_grid:
                 main:
                     create:
                         type: create
+                        label: sherlockode_sylius_faq.ui.new_category
                 item:
                     update:
                         type: update
