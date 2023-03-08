@@ -6,6 +6,8 @@ namespace Sherlockode\SyliusFAQPlugin\EventListener;
 
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
+use Doctrine\ORM\Event\PrePersistEventArgs;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Liip\ImagineBundle\Imagine\Filter\FilterManager;
 use Sherlockode\SyliusFAQPlugin\Entity\Category;
@@ -117,5 +119,28 @@ class CategoryListener
             $this->cacheManager->remove($imagePath, array_keys($this->filterManager->getFilterConfiguration()->all()));
             unset($this->imagesToDelete[$key]);
         }
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return void
+     */
+    public function prePersist(PrePersistEventArgs $event)
+    {
+        $entity = $event->getObject();
+
+        if (!$entity instanceof Category) {
+            return;
+        }
+
+        $category = $event->getObjectManager()->getRepository(Category::class)->findOneBy([], ['position' => 'DESC']);
+        if (null === $category) {
+            $entity->setPosition(1);
+
+            return;
+        }
+
+        $entity->setPosition($category->getPosition() + 1);
     }
 }

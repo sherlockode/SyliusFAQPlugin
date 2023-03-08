@@ -7,7 +7,6 @@ namespace Sherlockode\SyliusFAQPlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
@@ -55,7 +54,6 @@ class Category implements ResourceInterface, TranslatableInterface
     /**
      * @var int
      *
-     * @Gedmo\SortablePosition
      * @ORM\Column(name="position", type="integer")
      */
     private $position;
@@ -77,7 +75,6 @@ class Category implements ResourceInterface, TranslatableInterface
         $this->initializeTranslationsCollection();
         $this->channels = new ArrayCollection();
         $this->questions = new ArrayCollection();
-        $this->setPosition(1);
     }
 
     /**
