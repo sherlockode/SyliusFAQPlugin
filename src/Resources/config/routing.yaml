@@ -1,6 +1,8 @@
 sherlockode_sylius_plugin_faq:
     path: /{_locale}/faq
     methods: [GET]
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
     defaults:
         _controller: Sherlockode\SyliusFAQPlugin\Controller\FaqController::indexAction
 
