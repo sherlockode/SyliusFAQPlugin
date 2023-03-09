@@ -55,6 +55,9 @@
 
 .contents .branch-drag-handler {
     cursor: move;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 .sortable-placeholder {
