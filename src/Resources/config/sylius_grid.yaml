@@ -10,6 +10,9 @@ sylius_grid:
                         arguments: [ "%locale%" ]
             sorting:
                 position: asc
+            # Contrary to what is found in the documentation (limits: ~), it is not possible to remove the pagination, there is no other choice
+            # https://github.com/Sylius/SyliusGridBundle/blob/1.13/docs/your_first_grid.md#pagination
+            limits: [1000]
             fields:
                 position:
                     type: string
