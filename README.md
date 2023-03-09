@@ -58,6 +58,12 @@ sherlockode_sylius_faq_plugin:
     resource: "@SherlockodeSyliusFAQPlugin/Resources/config/routing.yaml"
 ```
 
+Publish the assets to finish the installation
+
+```bash
+php bin/console assets:install public
+```
+
 ----
 
 ## Usage
