@@ -4,22 +4,21 @@ sherlockode_sylius_faq_admin_category:
         section: admin
         templates: "@SherlockodeSyliusFAQPlugin/admin/Category"
         redirect: update
+        except: ['show']
         grid: sherlockode_sylius_faq_admin_category
         vars:
             index:
-                icon: 'icon folder'
+                icon: 'icon question'
     type: sylius.resource
 
 sherlockode_sylius_faq_admin_question:
     resource: |
         alias: sherlockode_sylius_faq.question
         section: admin
-        templates: "@SherlockodeSyliusFAQPlugin/admin/Crud"
+        templates: "@SherlockodeSyliusFAQPlugin/admin/Question"
         redirect: update
+        except: ['show', 'index']
         grid: sherlockode_sylius_faq_admin_question
-        vars:
-            index:
-                icon: 'icon question circle outline'
     type: sylius.resource
 
 sherlockode_sylius_faq_admin_category_remove_icon:

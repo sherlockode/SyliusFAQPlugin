@@ -12,14 +12,7 @@ sylius_grid:
                 position: asc
             fields:
                 position:
-                    type: twig
-                    label: sherlockode_sylius_faq.ui.category.position
-                    sortable: ~
-                    options:
-                        template: "@SyliusUi/Grid/Field/position.html.twig"
-                name:
                     type: string
-                    label: sylius.ui.name
             actions:
                 main:
                     create:
@@ -30,12 +23,6 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
-            filters:
-                search:
-                    type: string
-                    label: sylius.ui.search
-                    options:
-                        fields: [ translation.name ]
         sherlockode_sylius_faq_admin_question:
             driver:
                 name: doctrine/orm
@@ -44,20 +31,6 @@ sylius_grid:
                     repository:
                         method: createListQueryBuilder
                         arguments: [ "%locale%" ]
-            sorting:
-                position: asc
-            fields:
-                position:
-                    type: twig
-                    label: sherlockode_sylius_faq.ui.question.position
-                    sortable: ~
-                    options:
-                        template: "@SyliusUi/Grid/Field/position.html.twig"
-                question:
-                    type: twig
-                    label: sherlockode_sylius_faq.ui.question.question
-                    options:
-                        template: "@SherlockodeSyliusFAQPlugin/admin/Field/_question.html.twig"
             actions:
                 main:
                     create:
@@ -67,9 +40,3 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
-            filters:
-                search:
-                    type: string
-                    label: sylius.ui.search
-                    options:
-                        fields: [ translation.question ]
