@@ -2,12 +2,12 @@ sherlockode_sylius_faq:
     ui:
         title: FAQ
         content: FAQ
-        categories: Catégories
+        categories: FAQ
         questions: Questions / Réponses
-        new_category: Nouvelle categorie
-        edit_category: Edition d'une catégorie
-        new_question: Nouvelle question / réponse
-        edit_question: Edition d'une question / réponse
+        new_category: Nouvelle categorie FAQ
+        edit_category: Edition d'une catégorie FAQ
+        new_question: Nouvelle question / réponse FAQ
+        edit_question: Edition d'une question / réponse FAQ
         category:
             name: Nom de la catégorie
             icon: Icône de la catégorie

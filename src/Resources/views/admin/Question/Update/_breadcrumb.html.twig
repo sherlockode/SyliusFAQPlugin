@@ -1,0 +1,13 @@
+{% import '@SyliusAdmin/Macro/breadcrumb.html.twig' as breadcrumb %}
+
+{% set breadcrumb = 'sherlockode_sylius_faq.ui.title'|trans %}
+
+{% set breadcrumbs = [
+        { label: 'sylius.ui.administration'|trans, url: path('sylius_admin_dashboard') },
+        { label: breadcrumb|trans, url: path('sherlockode_sylius_faq_admin_category_index') },
+        { label: resource.name|default(resource.code|default(resource.id)) },
+        { label: 'sylius.ui.edit'|trans }
+    ]
+%}
+
+{{ breadcrumb.crumble(breadcrumbs) }}

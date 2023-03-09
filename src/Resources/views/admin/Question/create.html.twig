@@ -1,0 +1,24 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
+{% set event_prefix = metadata.applicationName ~ '.admin.' ~ metadata.name ~ '.create' %}
+
+{% block title %}{{ header|trans }} {{ parent() }}{% endblock %}
+
+{% form_theme form with ['@SyliusAdmin/Form/theme.html.twig', '@SherlockodeSyliusFAQPlugin/admin/form_theme.html.twig'] %}
+
+{% block content %}
+    {{ sylius_template_event([event_prefix, 'sherlockode_faq.admin.question.create'], _context) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ sylius_template_event([event_prefix ~ '.stylesheets', 'sylius.admin.create.stylesheets'], { 'metadata': metadata }) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event([event_prefix ~ '.javascripts', 'sylius.admin.create.javascripts'], { 'metadata': metadata }) }}
+{% endblock %}
