@@ -64,7 +64,7 @@ class TreeRuntime implements RuntimeExtensionInterface
 
                 $tree[$id] = [
                     'id' => 'question_' . $question->getId(),
-                    'title' => $this->getDefaultLabel($category),
+                    'title' => $this->getDefaultLabel($question),
                     'parent_id' => 'category_' . $category->getId(),
                     'level' => 2,
                     'min_level' => 2,
