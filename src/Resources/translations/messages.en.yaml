@@ -1,9 +1,7 @@
 sherlockode_sylius_faq:
     ui:
         title: FAQ
-        content: FAQ
         categories: FAQ
-        questions: Questions / Answers
         new_category: New FAQ category
         edit_category: Edit FAQ category
         new_question: New FAQ question / answer
@@ -12,10 +10,8 @@ sherlockode_sylius_faq:
             name: Category name
             icon: Category icon
             channels: Channels
-            position: Position
         question:
             category: Category
             question: Question
             answer: Answer
             channels: Channels
-            position: Position
