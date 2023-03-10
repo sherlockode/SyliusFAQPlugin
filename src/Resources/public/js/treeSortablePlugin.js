@@ -144,16 +144,16 @@ function TreeSortablePlugin(options) {
                 <span class="${self.cleanSelector(branchPathSelector)}"></span>
                 <div class="branch-wrapper">
                     <div class="${self.cleanSelector(dragHandlerSelector)}">
-                      <div class="left-sidebar">
-                          <div>
-                              <i class="alternate icon"></i>
-                          </div>
-                          <span class="branch-title">${title}</span>
-                      </div>
-                      <div class="locales">${localeFlags}</div>
+                        ${displayBtn}
+                        <div class="left-sidebar">
+                            <div>
+                                <i class="alternate icon"></i>
+                            </div>
+                            <span class="branch-title">${title}</span>
+                        </div>
+                        <div class="locales">${localeFlags}</div>
                     </div>
                     <div class="right-sidebar ui buttons">
-                        ${displayBtn}
                         ${editBtn}
                         ${deleteBtn}
                     </div>

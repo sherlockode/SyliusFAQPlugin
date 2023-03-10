@@ -6,6 +6,13 @@
     padding-left: 0;
 }
 
+.sherlockode-faq-category-show-question.ui.icon.button {
+    background: transparent;
+    margin-left: -10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
 .sherlockode-faq-category-show-question .icon::before {
     content: "\f078";
 }
