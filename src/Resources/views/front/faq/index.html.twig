@@ -52,13 +52,13 @@
                     <div id="faq-category-{{ category.id }}" class="sherlockode-category-question-items" {% if loop.index > 1 %}style="display: none"{% endif %}>
                         {% for question in category.questions %}
                             {% if sherlockode_faq_has_translation(question, sylius.localeCode) %}
-                                <h3 id="faq-question-answer-heading-{{ loop.index }}" class="sherlockode-faq-question-title">
-                                    <button type="button" class="sherlockode-faq-btn-collapse" aria-expanded="false" aria-controls="faq-question-answer-{{ loop.index }}">
+                                <h3 id="faq-question-answer-heading-{{ question.id }}" class="sherlockode-faq-question-title">
+                                    <button type="button" class="sherlockode-faq-btn-collapse" aria-expanded="false" aria-controls="faq-question-answer-{{ question.id }}">
                                         {{ question.question }}
                                         <i class="angle down icon"></i>
                                     </button>
                                 </h3>
-                                <div id="faq-question-answer-{{ loop.index }}" class="sherlockode-faq-answer" aria-labelledby="faq-question-answer-heading-{{ loop.index }}" style="height: 0px" data-collapsed="true">
+                                <div id="faq-question-answer-{{ question.id }}" class="sherlockode-faq-answer" aria-labelledby="faq-question-answer-heading-{{ question.id }}" style="height: 0px" data-collapsed="true">
                                     {{ question.answer|raw }}
                                 </div>
                             {% endif %}
