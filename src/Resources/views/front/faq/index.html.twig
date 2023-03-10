@@ -2,6 +2,12 @@
 
 {% block content %}
     {% set firstCategory = null %}
+    {% set saveCategorySpace = false %}
+    {% for category in categories %}
+        {% if category.iconPath is not null %}
+            {% set saveCategorySpace = true %}
+        {% endif %}
+    {% endfor %}
     <h1 class="sherlockode-faq-title ui huge header">{{ 'sherlockode_sylius_faq.ui.title'|trans }}</h1>
     <div class="sherlockode-faq-grid">
         <div class="ui list sherlockode-faq-category">
@@ -18,11 +24,13 @@
                     {% endif %}
 
                     <button class="item ui button sherlockode-faq-btn-category {{ loop.index == 1 ? 'active' : '' }}" data-target="#faq-category-{{ category.id }}">
-                        <span class="sherlockode-faq-category-icon-wrapper">
-                            {% if original_path is defined and original_path is not null %}
-                                <img src="{{ original_path }}" alt="" width="25px" height="25px">
-                            {% endif %}
-                        </span>
+                        {% if saveCategorySpace %}
+                            <span class="sherlockode-faq-category-icon-wrapper">
+                                {% if original_path is defined and original_path is not null %}
+                                    <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                                {% endif %}
+                            </span>
+                        {% endif %}
                         <span>{{ category.name }}</span>
                         <i class="angle right icon"></i>
                     </button>
