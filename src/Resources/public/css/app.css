@@ -31,3 +31,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
 }
+
+.sherlockode-faq-create-btns {
+    float: right;
+}
