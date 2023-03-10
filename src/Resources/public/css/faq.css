@@ -36,7 +36,9 @@
 }
 
 .sherlockode-faq-category.ui.list > .item {
+    gap: 20px;
     display: flex ;
+    text-align: left;
     justify-content: space-between;
 
     width: 100%;
@@ -206,4 +208,5 @@ body.sherlockode-faq-modal-active:not(.closing) .sherlockode-faq-modal-category 
 .sherlockode-faq-category-icon-wrapper {
     width: 25px;
     height: 25px;
+    flex-shrink: 0;
 }
