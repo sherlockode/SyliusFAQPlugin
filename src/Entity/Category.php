@@ -47,7 +47,7 @@ class Category implements ResourceInterface, TranslatableInterface
      * @var Collection|Question[]
      *
      * @ORM\OrderBy({"position": "ASC"})
-     * @ORM\OneToMany(targetEntity="Sherlockode\SyliusFAQPlugin\Entity\Question", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Sherlockode\SyliusFAQPlugin\Entity\Question", mappedBy="category", orphanRemoval=true)
      */
     private $questions;
 
@@ -133,6 +133,7 @@ class Category implements ResourceInterface, TranslatableInterface
     public function addQuestion(Question $question): self
     {
         $this->questions->add($question);
+        $question->setCategory($this);
 
         return $this;
     }
@@ -145,6 +146,7 @@ class Category implements ResourceInterface, TranslatableInterface
     public function removeQuestion(Question $question): self
     {
         $this->questions->removeElement($question);
+        $question->setCategory(null);
 
         return $this;
     }
