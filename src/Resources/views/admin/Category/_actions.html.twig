@@ -1,5 +1,5 @@
 <div class="middle aligned column">
-    <div class="ui right floated buttons">
+    <div class="ui right floated sherlockode-faq-create-btns">
         {% if definition.actionGroups.main is defined %}
             {% for action in definition.getEnabledActions('main') %}
                 {{ sylius_grid_render_action(resources, action, null) }}
