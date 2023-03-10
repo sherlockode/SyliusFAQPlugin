@@ -47,7 +47,7 @@ class Question implements ResourceInterface, TranslatableInterface
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Sherlockode\SyliusFAQPlugin\Entity\Category", inversedBy="questions")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 
@@ -113,11 +113,11 @@ class Question implements ResourceInterface, TranslatableInterface
     }
 
     /**
-     * @param Category $category
+     * @param Category|null $category
      *
      * @return $this
      */
-    public function setCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
 
