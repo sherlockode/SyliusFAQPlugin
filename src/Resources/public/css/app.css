@@ -42,3 +42,7 @@
 .sherlockode-faq-create-btns {
     float: right;
 }
+
+#sherlockode-faq-category-tree .left-sidebar {
+    margin-right: 24px;
+}
