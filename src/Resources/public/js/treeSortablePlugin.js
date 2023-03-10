@@ -568,7 +568,7 @@ function TreeSortablePlugin(options) {
                 ui.placeholder.detach();
                 $(this).sortable('refresh');
                 ui.item.after(ui.placeholder);
-                tmp.css('margin-top', 0);
+                tmp.css('margin-top', '');
 
                 // Set the current level by the initial item's level.
                 currentLevel = level;
