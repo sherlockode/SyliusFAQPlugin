@@ -15,10 +15,12 @@
     {{ parent() }}
 
     {{ sylius_template_event([event_prefix ~ '.stylesheets', 'sylius.admin.create.stylesheets'], { 'metadata': metadata }) }}
+    {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/app.css'} %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
 
     {{ sylius_template_event([event_prefix ~ '.javascripts', 'sylius.admin.create.javascripts'], { 'metadata': metadata }) }}
+    {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/admin.js'} %}
 {% endblock %}

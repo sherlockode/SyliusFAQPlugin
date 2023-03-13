@@ -5,9 +5,11 @@
                 {{ sylius_grid_render_action(resources, action, null) }}
             {% endfor %}
         {% endif %}
-        <a class="ui labeled icon button primary" href="{{ path('sherlockode_sylius_faq_admin_question_create') }}">
-            <i class="icon plus"></i>
-            {{ 'sherlockode_sylius_faq.ui.new_question'|trans }}
-        </a>
+        {% if data.nbResults > 0 %}
+            <a class="ui labeled icon button primary" href="{{ path('sherlockode_sylius_faq_admin_question_create') }}">
+                <i class="icon plus"></i>
+                {{ 'sherlockode_sylius_faq.ui.new_question'|trans }}
+            </a>
+        {% endif %}
     </div>
 </div>
