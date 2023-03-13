@@ -1,0 +1,55 @@
+{% if data.nbResults == 0 %}
+    <h3 class="sherlockode-faq-select-style">{{ 'sherlockode_sylius_faq.ui.select_faq_style'|trans }}</h3>
+    <div class="sherlockode-faq-empty">
+        <div class="sherlockode-faq-category">
+            <div class="sherlockode-faq-preview">
+                <div class="sherlockode-faq-category-menu">
+                    <div class="sherlockode-faq-category-menu-item"></div>
+                    <div class="sherlockode-faq-category-menu-item"></div>
+                    <div class="sherlockode-faq-category-menu-item"></div>
+                </div>
+                <div class="sherlockode-faq-questions">
+                    <div class="sherlockode-faq-questions-item"></div>
+                    <div class="sherlockode-faq-questions-item"></div>
+                    <div class="sherlockode-faq-questions-item"></div>
+                    <div class="sherlockode-faq-questions-item"></div>
+                    <div class="sherlockode-faq-questions-item"></div>
+                    <div class="sherlockode-faq-questions-item"></div>
+                    <div class="sherlockode-faq-questions-item"></div>
+                </div>
+            </div>
+            <div class="sherlockode-faq-preview-action">
+                <a href="{{ path('sherlockode_sylius_faq_admin_category_create') }}" class="ui labeled icon button  primary ">
+                    <i class="icon plus"></i>
+                    {{ 'sherlockode_sylius_faq.ui.new_faq_advanced'|trans }}
+                </a>
+            </div>
+        </div>
+        <div class="sherlockode-faq-question">
+            <div class="sherlockode-faq-preview">
+                <div class="sherlockode-faq-questions-item"></div>
+                <div class="sherlockode-faq-questions-item"></div>
+                <div class="sherlockode-faq-questions-item"></div>
+                <div class="sherlockode-faq-questions-item"></div>
+                <div class="sherlockode-faq-questions-item"></div>
+                <div class="sherlockode-faq-questions-item"></div>
+                <div class="sherlockode-faq-questions-item"></div>
+            </div>
+            <div class="sherlockode-faq-preview-action">
+                <a class="ui labeled icon button primary" href="{{ path('sherlockode_sylius_faq_admin_question_create') }}">
+                    <i class="icon plus"></i>
+                    {{ 'sherlockode_sylius_faq.ui.new_faq_simple'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="tree-sortable-wrapper">
+        <ul id="sherlockode-faq-category-tree" data-json="{{ sherlockode_faq_generate_tree(data) }}"></ul>
+    </div>
+
+    <form action="{{ path('sherlockode_sylius_faq_resource_order') }}" method="post">
+        <input type="hidden" name="resource_order" id="sherlockode-faq-resource-order">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('sherlockode-faq-category-tree') }}" />
+    </form>
+{% endif %}

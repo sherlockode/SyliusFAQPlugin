@@ -81,6 +81,16 @@ services:
             - '@twig'
         tags:
             - { name: twig.runtime }
+                
+    Sherlockode\SyliusFAQPlugin\Twig\Extension\ResourceExtension:
+        tags:
+            - { name: twig.extension }
+                
+    Sherlockode\SyliusFAQPlugin\Twig\ResourceRuntime:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - { name: twig.runtime }
 
     Sherlockode\SyliusFAQPlugin\Manager\ResourceManager:
         arguments:
