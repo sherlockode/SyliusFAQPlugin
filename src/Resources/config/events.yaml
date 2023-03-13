@@ -16,7 +16,7 @@ sylius_ui:
                     context:
                         postfix: index.after_header
                 content:
-                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/_content.html.twig"
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/Index/_content.html.twig"
                     priority: 10
                 after_content:
                     template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
