@@ -6,12 +6,14 @@ sherlockode_sylius_faq:
         edit_category: Edition d'une catégorie FAQ
         new_question: Nouvelle question / réponse FAQ
         edit_question: Edition d'une question / réponse FAQ
+        empty_faq: Vous n'avez créé aucune catégorie
         category:
             name: Nom de la catégorie
             icon: Icône de la catégorie
             channels: Channels
         question:
             category: Catégorie
+            select_category: Veuillez sélectionner une catégorie
             question: Question
             answer: Réponse
             channels: Channels

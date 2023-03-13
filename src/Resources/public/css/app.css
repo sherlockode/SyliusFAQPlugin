@@ -9,7 +9,7 @@
 .sherlockode-faq-category-show-question.ui.icon.button {
     background: transparent;
     margin-left: -10px;
-    margin-right: 10px;
+    margin-right: 13px;
     padding: 5px;
 }
 
@@ -49,4 +49,13 @@
 
 #sherlockode-faq-category-tree .branch-level-1 {
     margin-top: 24px;
+}
+
+.sherlockode-faq-empty {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.sherlockode-faq-question-wrapper {
+    margin-top: 20px;
 }

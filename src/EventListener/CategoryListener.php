@@ -122,7 +122,7 @@ class CategoryListener
     }
 
     /**
-     * @param LifecycleEventArgs $args
+     * @param PrePersistEventArgs $event
      *
      * @return void
      */

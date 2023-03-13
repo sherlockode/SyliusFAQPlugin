@@ -21,4 +21,5 @@
     {{ parent() }}
 
     {{ sylius_template_event([event_prefix ~ '.javascripts', 'sylius.admin.update.javascripts'], { 'metadata': metadata }) }}
+    {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/admin.js'} %}
 {% endblock %}

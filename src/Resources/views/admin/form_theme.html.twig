@@ -38,3 +38,21 @@
     {% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
     {{ translationForm(form) }}
 {% endblock %}
+
+{% block _category_channels_widget %}
+    {{ form_widget(form, {'attr': {'class': 'ui fluid search dropdown semantic-dropdown'}}) }}
+{% endblock %}
+
+{% block _question_channels_row %}
+    <div class="sherlockode-faq-question-wrapper">
+        {{ form_row(form) }}
+    </div>
+{% endblock %}
+
+{% block _question_channels_widget %}
+    {{ form_widget(form, {'attr': {'class': 'ui fluid search dropdown semantic-dropdown'}}) }}
+{% endblock %}
+
+{% block _question_category_widget %}
+    {{ form_widget(form, {'attr': {'class': 'ui fluid search dropdown semantic-dropdown'}}) }}
+{% endblock %}
