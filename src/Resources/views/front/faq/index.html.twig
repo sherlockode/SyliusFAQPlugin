@@ -1,5 +1,12 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
+{% set saveCategoryIconSpace = false %}
+{% for category in categories %}
+    {% if category.iconPath is not null %}
+        {% set saveCategoryIconSpace = true %}
+    {% endif %}
+{% endfor %}
+
 {% block content %}
     {% if questions is empty %}
         {% include '@SherlockodeSyliusFAQPlugin/front/faq/_with_category.html.twig' %}
