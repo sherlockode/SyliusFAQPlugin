@@ -1,8 +1,8 @@
-.tree-sortable-wrapper {
+.sherlockode-faq-tree-sortable-wrapper {
     margin: 40px 0;
 }
 
-.tree-sortable-wrapper > ul {
+.sherlockode-faq-tree-sortable-wrapper > ul {
     padding-left: 0;
 }
 
@@ -21,19 +21,19 @@
     content: "\f077";
 }
 
-#sherlockode-faq-category-tree li.hide {
+#sherlockode-faq-tree li.hide {
     display: none;
 }
 
-#sherlockode-faq-category-tree li[data-level="1"] .left-sidebar .icon::before {
+#sherlockode-faq-tree li[data-type="category"] .left-sidebar .icon::before {
     content: "\f07b";
 }
 
-#sherlockode-faq-category-tree li[data-level="2"] .left-sidebar .icon::before {
+#sherlockode-faq-tree li[data-type="question"] .left-sidebar .icon::before {
     content: "\f059";
 }
 
-#sherlockode-faq-category-tree .locales {
+#sherlockode-faq-tree .locales {
     width: 200px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
@@ -43,11 +43,11 @@
     float: right;
 }
 
-#sherlockode-faq-category-tree .left-sidebar {
+#sherlockode-faq-tree .left-sidebar {
     margin-right: 24px;
 }
 
-#sherlockode-faq-category-tree .branch-level-1 {
+#sherlockode-faq-tree .tree-branch[data-type="category"] {
     margin-top: 24px;
 }
 

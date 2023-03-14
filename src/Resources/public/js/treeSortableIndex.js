@@ -2,7 +2,7 @@ $(document).ready(function () {
   'use strict';
 
   let inputValue = $('#sherlockode-faq-resource-order');
-  const treeSelector = '#sherlockode-faq-category-tree';
+  const treeSelector = '#sherlockode-faq-tree';
   const treeSortable = new TreeSortablePlugin({
     treeSelector: treeSelector,
     maxLevel: 2,

@@ -105,7 +105,7 @@ function TreeSortablePlugin(options) {
             return v.toString(16);
         });
     };
-    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null, edit_path = null, delete_form = null, locales = [], nb_question = 0 }) {
+    this.createBranch = function ({ id, parent_id, title, level, min_level = null, max_level = null, edit_path = null, delete_form = null, locales = [], nb_question = 0, type = null }) {
         const {
             branchSelector,
             branchPathSelector,
@@ -138,7 +138,7 @@ function TreeSortablePlugin(options) {
         return `
 		<li id="${id}" class="${self.cleanSelector(
             branchSelector
-        )} ${levelPrefix}-${level}" data-${idAttr}="${id}" data-${parentAttr}="${parent_id}" data-${levelAttr}="${level}"
+        )} ${levelPrefix}-${level}" data-${idAttr}="${id}" data-${parentAttr}="${parent_id}" data-${levelAttr}="${level}" data-type="${type}"
 		    ${minLvlAttr} ${maxLvlAttr}>
             <div class="contents">
                 <span class="${self.cleanSelector(branchPathSelector)}"></span>

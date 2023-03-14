@@ -51,15 +51,26 @@ class ResourceController extends AbstractController
             $data =  json_decode($request->request->get('resource_order'));
             $resources = $this->resourceManager->normalizeResourcesOrder($data);
 
-            foreach ($resources as $key => $resource) {
-                /** @var Category $category */
-                $category = $resource['category'];
-                $category->setPosition($key + 1);
+            if (count($resources) === 0) {
+                return new JsonResponse(status: Response::HTTP_OK);
+            }
 
+            if ($resources[0] instanceof Question) {
                 /** @var Question $question */
-                foreach ($resource['questions'] as $questionKey => $question) {
-                    $question->setCategory($category);
-                    $question->setPosition($questionKey + 1);
+                foreach ($resources as $key => $question) {
+                    $question->setPosition($key + 1);
+                }
+            } elseif (is_array($resources[0]) && isset($resources[0]['category'])) {
+                foreach ($resources as $key => $resource) {
+                    /** @var Category $category */
+                    $category = $resource['category'];
+                    $category->setPosition($key + 1);
+
+                    /** @var Question $question */
+                    foreach ($resource['questions'] as $questionKey => $question) {
+                        $question->setCategory($category);
+                        $question->setPosition($questionKey + 1);
+                    }
                 }
             }
 

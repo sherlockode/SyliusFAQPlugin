@@ -14,7 +14,8 @@ class ResourceExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('sherlockode_faq_has_category', [ResourceRuntime::class, 'hasCategory']),
+            new TwigFunction('sherlockode_faq_has_resource', [ResourceRuntime::class, 'hasResource']),
+            new TwigFunction('sherlockode_faq_his_simple_faq', [ResourceRuntime::class, 'hisSimpleFAQ']),
         ];
     }
 }

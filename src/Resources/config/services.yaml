@@ -4,6 +4,11 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
 
+    Sherlockode\SyliusFAQPlugin\Form\Type\QuestionType:
+        calls:
+            - [setEm, ['@doctrine.orm.entity_manager']]
+        autoconfigure: true
+
     app.faq_category_translation.form.type:
         class: Sherlockode\SyliusFAQPlugin\Form\Type\CategoryTranslationType
         tags:
@@ -77,6 +82,7 @@ services:
 
     Sherlockode\SyliusFAQPlugin\Twig\TreeRuntime:
         arguments:
+            - '@doctrine.orm.entity_manager'
             - '@router'
             - '@twig'
         tags:
