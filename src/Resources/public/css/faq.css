@@ -210,3 +210,15 @@ body.sherlockode-faq-modal-active:not(.closing) .sherlockode-faq-modal-category 
     height: 25px;
     flex-shrink: 0;
 }
+
+.sherlockode-faq-category-label {
+    flex-grow: 1;
+}
+
+.sherlockode-faq-category-mobile .sherlockode-faq-category-label {
+    flex-grow: 0;
+}
+
+.sherlockode-faq-btn-category .sherlockode-faq-category-label {
+    text-align: left;
+}
