@@ -1,15 +1,15 @@
-<div class="middle aligned column">
-    <div class="ui right floated sherlockode-faq-create-btns">
-        {% if definition.actionGroups.main is defined %}
-            {% for action in definition.getEnabledActions('main') %}
-                {{ sylius_grid_render_action(resources, action, null) }}
-            {% endfor %}
-        {% endif %}
-        {% if data.nbResults > 0 %}
+{% if sherlockode_faq_has_category() %}
+    <div class="middle aligned column">
+        <div class="ui right floated sherlockode-faq-create-btns">
+            {% if definition.actionGroups.main is defined %}
+                {% for action in definition.getEnabledActions('main') %}
+                    {{ sylius_grid_render_action(resources, action, null) }}
+                {% endfor %}
+            {% endif %}
             <a class="ui labeled icon button primary" href="{{ path('sherlockode_sylius_faq_admin_question_create') }}">
                 <i class="icon plus"></i>
                 {{ 'sherlockode_sylius_faq.ui.new_question'|trans }}
             </a>
-        {% endif %}
+        </div>
     </div>
-</div>
+{% endif %}

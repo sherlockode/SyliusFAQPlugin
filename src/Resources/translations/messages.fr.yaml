@@ -2,11 +2,13 @@ sherlockode_sylius_faq:
     ui:
         title: FAQ
         categories: FAQ
+        select_faq_style: Choisissez votre style de FAQ
+        new_faq_simple: Nouvelle FAQ sans catégories
+        new_faq_advanced: Nouvelle FAQ avec catégories
         new_category: Nouvelle categorie FAQ
         edit_category: Edition d'une catégorie FAQ
         new_question: Nouvelle question / réponse FAQ
         edit_question: Edition d'une question / réponse FAQ
-        empty_faq: Vous n'avez créé aucune catégorie
         category:
             name: Nom de la catégorie
             icon: Icône de la catégorie

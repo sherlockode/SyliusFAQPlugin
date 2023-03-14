@@ -2,11 +2,13 @@ sherlockode_sylius_faq:
     ui:
         title: FAQ
         categories: FAQ
+        select_faq_style: Select your FAQ style
+        new_faq_simple: New FAQ without categories
+        new_faq_advanced: New FAQ with categories
         new_category: New FAQ category
         edit_category: Edit FAQ category
         new_question: New FAQ question / answer
         edit_question: Edit FAQ question / answer
-        empty_faq: You have not created any categories
         category:
             name: Category name
             icon: Category icon
