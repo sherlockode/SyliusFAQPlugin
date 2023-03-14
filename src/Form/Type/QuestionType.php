@@ -2,6 +2,7 @@
 
 namespace Sherlockode\SyliusFAQPlugin\Form\Type;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Sherlockode\SyliusFAQPlugin\Entity\Category;
 use Sherlockode\SyliusFAQPlugin\Entity\Question;
 use Sherlockode\SyliusFAQPlugin\Form\Listener\ResizeFormListener;
@@ -10,12 +11,19 @@ use Sylius\Component\Core\Model\Channel;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class QuestionType extends AbstractType
 {
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
     /**
      * {@inheritdoc}
      */
@@ -50,6 +58,24 @@ class QuestionType extends AbstractType
         ;
 
         $builder->get('translations')->addEventSubscriber(new ResizeFormListener());
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            if ($this->em->getRepository(Category::class)->findOneBy([]) === null) {
+                $event->getForm()->remove('category');
+            }
+        });
+    }
+
+    /**
+     * @param EntityManagerInterface $em
+     *
+     * @return QuestionType
+     */
+    public function setEm(EntityManagerInterface $em): self
+    {
+        $this->em = $em;
+
+        return $this;
     }
 
     /**

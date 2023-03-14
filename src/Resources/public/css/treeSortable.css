@@ -2,7 +2,7 @@
     --tree-max-width: 800px;
 }
 
-.tree-sortable-wrapper ul {
+.sherlockode-faq-tree-sortable-wrapper ul {
     list-style: none;
 }
 
@@ -113,10 +113,10 @@
     text-overflow: ellipsis;
 }
 
-#sherlockode-faq-category-tree .right-sidebar .ui.button {
+#sherlockode-faq-tree .right-sidebar .ui.button {
     padding: 8px 12px;
 }
 
-#sherlockode-faq-category-tree .right-sidebar .ui.button:not(.icon) > .icon:not(.button):not(.dropdown) {
+#sherlockode-faq-tree .right-sidebar .ui.button:not(.icon) > .icon:not(.button):not(.dropdown) {
     margin: 0;
 }

@@ -1,5 +1,7 @@
 {% extends '@SyliusAdmin/Crud/index.html.twig' %}
 
+{% set hasResources = sherlockode_faq_has_resource() %}
+
 {% block content %}
     {{ sylius_template_event([event_prefix, 'sherlockode_faq.admin.category.index'], _context) }}
 {% endblock %}
@@ -9,7 +11,7 @@
 
     <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
     {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/app.css'} %}
-    {% if data.nbResults > 0 %}
+    {% if hasResources %}
         {% include '@SyliusUi/_stylesheets.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/css/treeSortable.css'} %}
     {% endif%}
 {% endblock %}
@@ -18,7 +20,7 @@
     {{ parent() }}
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    {% if data.nbResults > 0 %}
+    {% if hasResources %}
         {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/treeSortablePlugin.js'} %}
         {% include '@SyliusUi/_javascripts.html.twig' with {'path': '/bundles/sherlockodesyliusfaqplugin/js/treeSortableIndex.js'} %}
     {% endif %}

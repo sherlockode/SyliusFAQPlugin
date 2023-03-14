@@ -1,4 +1,4 @@
-{% if data.nbResults == 0 %}
+{% if sherlockode_faq_has_resource() == false %}
     <h3 class="sherlockode-faq-select-style">{{ 'sherlockode_sylius_faq.ui.select_faq_style'|trans }}</h3>
     <div class="sherlockode-faq-empty">
         <div class="sherlockode-faq-category">
@@ -44,8 +44,8 @@
         </div>
     </div>
 {% else %}
-    <div class="tree-sortable-wrapper">
-        <ul id="sherlockode-faq-category-tree" data-json="{{ sherlockode_faq_generate_tree(data) }}"></ul>
+    <div class="sherlockode-faq-tree-sortable-wrapper">
+        <ul id="sherlockode-faq-tree" data-json="{{ sherlockode_faq_generate_tree() }}"></ul>
     </div>
 
     <form action="{{ path('sherlockode_sylius_faq_resource_order') }}" method="post">

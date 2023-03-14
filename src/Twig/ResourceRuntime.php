@@ -4,6 +4,7 @@ namespace Sherlockode\SyliusFAQPlugin\Twig;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Sherlockode\SyliusFAQPlugin\Entity\Category;
+use Sherlockode\SyliusFAQPlugin\Entity\Question;
 use Twig\Extension\RuntimeExtensionInterface;
 
 class ResourceRuntime implements RuntimeExtensionInterface
@@ -24,8 +25,15 @@ class ResourceRuntime implements RuntimeExtensionInterface
     /**
      * @return bool
      */
-    public function hasCategory(): bool
+    public function hasResource(): bool
     {
-        return null !== $this->em->getRepository(Category::class)->findOneBy([]);
+        return null !== $this->em->getRepository(Category::class)->findOneBy([])
+            || null !== $this->em->getRepository(Question::class)->findOneBy(['category' => null]);
+    }
+
+    public function hisSimpleFAQ(): bool
+    {
+        return null === $this->em->getRepository(Category::class)->findOneBy([])
+            && null !== $this->em->getRepository(Question::class)->findOneBy(['category' => null]);
     }
 }
