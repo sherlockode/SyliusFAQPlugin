@@ -16,7 +16,7 @@ class AdminMenuListener
 
         $configurationItem
             ->addChild('sherlockode_faq', [
-                'route' => 'sherlockode_sylius_faq_admin_category_index',
+                'route' => 'sherlockode_sylius_faq_admin_index',
                 'extras' => [
                     'routes' => [
                         'sherlockode_sylius_faq_admin_category_create',

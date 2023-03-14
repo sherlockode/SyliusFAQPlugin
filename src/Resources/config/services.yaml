@@ -63,6 +63,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@Sherlockode\SyliusFAQPlugin\Manager\ResourceManager'
+            - '@Sherlockode\SyliusFAQPlugin\Manager\TreeManager'
         calls:
             - [ setContainer, [ '@service_container' ] ]
         tags:
@@ -73,18 +74,6 @@ services:
             - { name: twig.extension }
 
     Sherlockode\SyliusFAQPlugin\Twig\TranslationRuntime:
-        tags:
-            - { name: twig.runtime }
-
-    Sherlockode\SyliusFAQPlugin\Twig\Extension\TreeExtension:
-        tags:
-            - { name: twig.extension }
-
-    Sherlockode\SyliusFAQPlugin\Twig\TreeRuntime:
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@router'
-            - '@twig'
         tags:
             - { name: twig.runtime }
                 
@@ -101,3 +90,9 @@ services:
     Sherlockode\SyliusFAQPlugin\Manager\ResourceManager:
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    Sherlockode\SyliusFAQPlugin\Manager\TreeManager:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@router'
+            - '@twig'

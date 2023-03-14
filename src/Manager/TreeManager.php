@@ -1,6 +1,6 @@
 <?php
 
-namespace Sherlockode\SyliusFAQPlugin\Twig;
+namespace Sherlockode\SyliusFAQPlugin\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Sherlockode\SyliusFAQPlugin\Entity\Category;
@@ -9,9 +9,8 @@ use Sherlockode\SyliusFAQPlugin\Entity\Question;
 use Sherlockode\SyliusFAQPlugin\Entity\QuestionTranslation;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
-use Twig\Extension\RuntimeExtensionInterface;
 
-class TreeRuntime implements RuntimeExtensionInterface
+class TreeManager
 {
     /**
      * @var EntityManagerInterface

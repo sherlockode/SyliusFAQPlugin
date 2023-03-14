@@ -8,7 +8,7 @@
 {% form_theme form with ['@SyliusAdmin/Form/theme.html.twig', '@SherlockodeSyliusFAQPlugin/admin/form_theme.html.twig'] %}
 
 {% block content %}
-    {{ sylius_template_event([event_prefix, 'sylius.admin.create'], _context) }}
+    {{ sylius_template_event([event_prefix, 'sherlockode_faq.admin.category.create'], _context) }}
 {% endblock %}
 
 {% block stylesheets %}

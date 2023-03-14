@@ -45,7 +45,7 @@
     </div>
 {% else %}
     <div class="sherlockode-faq-tree-sortable-wrapper">
-        <ul id="sherlockode-faq-tree" data-json="{{ sherlockode_faq_generate_tree() }}"></ul>
+        <ul id="sherlockode-faq-tree" data-json="{{ resources }}"></ul>
     </div>
 
     <form action="{{ path('sherlockode_sylius_faq_resource_order') }}" method="post">

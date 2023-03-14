@@ -13,7 +13,22 @@ sherlockode_sylius_faq_admin_question_delete:
         _controller: sherlockode_sylius_faq.controller.question::deleteAction
         _sylius:
             redirect:
-                route: sherlockode_sylius_faq_admin_category_index
+                route: sherlockode_sylius_faq_admin_index
+    
+sherlockode_sylius_faq_admin_category_delete:
+    path: /admin/faq/category/{id}
+    methods: [ DELETE ]
+    defaults:
+        _controller: sherlockode_sylius_faq.controller.category::deleteAction
+        _sylius:
+            redirect:
+                route: sherlockode_sylius_faq_admin_index
+                
+sherlockode_sylius_faq_admin_index:
+    path: /admin/faq
+    methods: [GET]
+    defaults:
+        _controller: Sherlockode\SyliusFAQPlugin\Controller\Admin\ResourceController::indexAction
 
 sherlockode_sylius_faq_resource_order:
     path: /admin/faq/resources
