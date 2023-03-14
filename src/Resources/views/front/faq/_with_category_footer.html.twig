@@ -1,0 +1,32 @@
+<div class="sherlockode-faq-modal-bg"></div>
+<div class="sherlockode-faq-modal-category">
+    <div class="sherlockode-faq-modal-category-header">
+        <button type="button" class="sherlockode-faq-modal-btn-close" aria-label="Close">
+            <i class="close icon"></i>
+        </button>
+    </div>
+    <div class="sherlockode-faq-modal-category-body">
+        <ul>
+            {% for category in categories %}
+                {% set original_path = null %}
+                {% if sherlockode_faq_has_translation(category, sylius.localeCode) %}
+                    {% if category.iconPath is not null %}
+                        {% set source_path = category.iconPath %}
+                        {% set original_path = source_path|imagine_filter('sherlockode_faq_category_icon') %}
+                    {% endif %}
+                    <li>
+                        <button class="item ui button sherlockode-faq-btn-category {{ loop.index == 1 ? 'active' : '' }}" data-target="#faq-category-{{ category.id }}">
+                        <span class="sherlockode-faq-category-icon-wrapper">
+                        {% if original_path is defined and original_path is not null %}
+                            <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                        {% endif %}
+                    </span>
+                            <span>{{ category.name }}</span>
+                            <i class="angle right icon"></i>
+                        </button>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>

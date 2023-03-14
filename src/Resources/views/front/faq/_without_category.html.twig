@@ -1,0 +1,16 @@
+<h1 class="sherlockode-faq-title ui huge header">{{ 'sherlockode_sylius_faq.ui.title'|trans }}</h1>
+<div class="sherlockode-category-question">
+    {% for question in questions %}
+        {% if sherlockode_faq_has_translation(question, sylius.localeCode) %}
+            <h3 id="faq-question-answer-heading-{{ question.id }}" class="sherlockode-faq-question-title">
+                <button type="button" class="sherlockode-faq-btn-collapse" aria-expanded="false" aria-controls="faq-question-answer-{{ question.id }}">
+                    {{ question.question }}
+                    <i class="angle down icon"></i>
+                </button>
+            </h3>
+            <div id="faq-question-answer-{{ question.id }}" class="sherlockode-faq-answer" aria-labelledby="faq-question-answer-heading-{{ question.id }}" style="height: 0px" data-collapsed="true">
+                {{ question.answer|raw }}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
