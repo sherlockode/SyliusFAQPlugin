@@ -9,19 +9,6 @@ use Sylius\Component\Channel\Model\ChannelInterface;
 class QuestionRepository extends EntityRepository
 {
     /**
-     * @param string $locale
-     *
-     * @return QueryBuilder
-     */
-    public function createListQueryBuilder(string $locale): QueryBuilder
-    {
-        return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
-            ->setParameter('locale', $locale)
-        ;
-    }
-
-    /**
      * @param ChannelInterface $channel
      *
      * @return array
