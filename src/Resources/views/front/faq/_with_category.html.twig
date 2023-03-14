@@ -1,0 +1,75 @@
+{% set firstCategory = null %}
+    {% set saveCategorySpace = false %}
+    {% for category in categories %}
+        {% if category.iconPath is not null %}
+            {% set saveCategorySpace = true %}
+        {% endif %}
+    {% endfor %}
+<h1 class="sherlockode-faq-title ui huge header">{{ 'sherlockode_sylius_faq.ui.title'|trans }}</h1>
+<div class="sherlockode-faq-grid">
+    <div class="ui list sherlockode-faq-category">
+        {% for category in categories %}
+            {% set original_path = null %}
+            {% if sherlockode_faq_has_translation(category, sylius.localeCode) %}
+                {% if null == firstCategory %}
+                    {% set firstCategory = category %}
+                {% endif %}
+
+                {% if category.iconPath is not null %}
+                    {% set source_path = category.iconPath %}
+                    {% set original_path = source_path|imagine_filter('sherlockode_faq_category_icon') %}
+                {% endif %}
+
+                <button class="item ui button sherlockode-faq-btn-category {{ loop.index == 1 ? 'active' : '' }}" data-target="#faq-category-{{ category.id }}">
+                    {% if saveCategorySpace %}
+                        <span class="sherlockode-faq-category-icon-wrapper">
+                                {% if original_path is defined and original_path is not null %}
+                                    <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                                {% endif %}
+                            </span>
+                    {% endif %}
+                    <span>{{ category.name }}</span>
+                    <i class="angle right icon"></i>
+                </button>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="sherlockode-faq-mobile-category">
+        {% if null != firstCategory %}
+            {% if firstCategory.iconPath is not null %}
+                {% set source_path = firstCategory.iconPath %}
+                {% set original_path = source_path|imagine_filter('sherlockode_faq_category_icon') %}
+            {% endif %}
+            <button class="sherlockode-faq-category-mobile">
+                {% if original_path is defined and original_path is not null %}
+                    <img src="{{ original_path }}" alt="" width="25px" height="25px">
+                {% endif %}
+                {{ firstCategory.name }}
+                <i class="angle right icon"></i>
+            </button>
+        {% endif %}
+    </div>
+
+    <div class="sherlockode-category-question">
+        {% for category in categories %}
+            {% if sherlockode_faq_has_translation(category, sylius.localeCode) %}
+                <div id="faq-category-{{ category.id }}" class="sherlockode-category-question-items" {% if loop.index > 1 %}style="display: none"{% endif %}>
+                    {% for question in category.questions %}
+                        {% if sherlockode_faq_has_translation(question, sylius.localeCode) %}
+                            <h3 id="faq-question-answer-heading-{{ question.id }}" class="sherlockode-faq-question-title">
+                                <button type="button" class="sherlockode-faq-btn-collapse" aria-expanded="false" aria-controls="faq-question-answer-{{ question.id }}">
+                                    {{ question.question }}
+                                    <i class="angle down icon"></i>
+                                </button>
+                            </h3>
+                            <div id="faq-question-answer-{{ question.id }}" class="sherlockode-faq-answer" aria-labelledby="faq-question-answer-heading-{{ question.id }}" style="height: 0px" data-collapsed="true">
+                                {{ question.answer|raw }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
