@@ -1,9 +1,11 @@
-{% extends '@SyliusAdmin/Crud/index.html.twig' %}
+{% extends '@SyliusAdmin/layout.html.twig' %}
 
 {% set hasResources = sherlockode_faq_has_resource() %}
 
+{% block title %}{{ 'sherlockode_sylius_faq.ui.title'|trans }} {{ parent() }}{% endblock %}
+
 {% block content %}
-    {{ sylius_template_event([event_prefix, 'sherlockode_faq.admin.category.index'], _context) }}
+    {{ sylius_template_event(['sherlockode_sylius_faq.index', 'sherlockode_faq.admin.index'], _context) }}
 {% endblock %}
 
 {% block stylesheets %}

@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Sherlockode\SyliusFAQPlugin\Entity\Category;
 use Sherlockode\SyliusFAQPlugin\Entity\Question;
 use Sherlockode\SyliusFAQPlugin\Manager\ResourceManager;
+use Sherlockode\SyliusFAQPlugin\Manager\TreeManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,13 +25,34 @@ class ResourceController extends AbstractController
     private $resourceManager;
 
     /**
+     * @var TreeManager
+     */
+    private $treeManager;
+
+    /**
      * @param EntityManagerInterface $em
      * @param ResourceManager        $resourceManager
+     * @param TreeManager            $treeManager
      */
-    public function __construct(EntityManagerInterface $em, ResourceManager $resourceManager)
+    public function __construct(EntityManagerInterface $em, ResourceManager $resourceManager, TreeManager $treeManager)
     {
         $this->em = $em;
         $this->resourceManager = $resourceManager;
+        $this->treeManager = $treeManager;
+    }
+
+    /**
+     * @return Response
+     *
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function indexAction(): Response
+    {
+        return $this->render('@SherlockodeSyliusFAQPlugin/admin/Tree/index.html.twig', [
+            'resources' => $this->treeManager->generateTree()
+        ]);
     }
 
     /**

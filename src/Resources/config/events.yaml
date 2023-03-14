@@ -1,28 +1,13 @@
 sylius_ui:
     events:
-        sherlockode_faq.admin.category.index:
+        sherlockode_faq.admin.index:
             blocks:
-                before_header_legacy:
-                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
-                    priority: 25
-                    context:
-                        postfix: index.before_header
                 header:
-                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/_header.html.twig"
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Tree/_header.html.twig"
                     priority: 20
-                after_header_legacy:
-                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
-                    priority: 15
-                    context:
-                        postfix: index.after_header
                 content:
-                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/Index/_content.html.twig"
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Tree/_content.html.twig"
                     priority: 10
-                after_content:
-                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
-                    priority: 5
-                    context:
-                        postfix: index.after_content
 
         sherlockode_faq.admin.question.update:
             blocks:
@@ -47,7 +32,7 @@ sylius_ui:
                     priority: 5
                     context:
                         postfix: index.after_content
-                        
+
         sherlockode_faq.admin.question.create:
             blocks:
                 before_header_legacy:
@@ -65,6 +50,54 @@ sylius_ui:
                         postfix: index.after_header
                 content:
                     template: "@SherlockodeSyliusFAQPlugin/admin/Question/Create/_content.html.twig"
+                    priority: 10
+                after_content:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 5
+                    context:
+                        postfix: index.after_content
+
+        sherlockode_faq.admin.category.update:
+            blocks:
+                before_header_legacy:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 25
+                    context:
+                        postfix: index.before_header
+                header:
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/Update/_header.html.twig"
+                    priority: 20
+                after_header_legacy:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 15
+                    context:
+                        postfix: index.after_header
+                content:
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/Update/_content.html.twig"
+                    priority: 10
+                after_content:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 5
+                    context:
+                        postfix: index.after_content
+
+        sherlockode_faq.admin.category.create:
+            blocks:
+                before_header_legacy:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 25
+                    context:
+                        postfix: index.before_header
+                header:
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/Create/_header.html.twig"
+                    priority: 20
+                after_header_legacy:
+                    template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+                    priority: 15
+                    context:
+                        postfix: index.after_header
+                content:
+                    template: "@SherlockodeSyliusFAQPlugin/admin/Category/Create/_content.html.twig"
                     priority: 10
                 after_content:
                     template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
