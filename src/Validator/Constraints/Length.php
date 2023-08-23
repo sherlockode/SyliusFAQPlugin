@@ -30,8 +30,8 @@ class Length extends BaseLength
             };
         }
         
-        // Backward compatibility: $countUnit is only supporter by Symfony > 5.4
-        if (Kernel::MAJOR_VERSION > 5 || Kernel::MAJOR_VERSION === 5 && Kernel::MINOR_VERSION > 4) {
+        // Backward compatibility: $countUnit is only supporter by Symfony >= 6.3
+        if (Kernel::MAJOR_VERSION > 6 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION >= 3) {
             parent::__construct(
                 $exactly,
                 $min,
