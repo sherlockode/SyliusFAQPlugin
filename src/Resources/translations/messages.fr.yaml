@@ -5,7 +5,7 @@ sherlockode_sylius_faq:
         select_faq_style: Choisissez votre style de FAQ
         new_faq_simple: Nouvelle FAQ sans catégories
         new_faq_advanced: Nouvelle FAQ avec catégories
-        new_category: Nouvelle categorie FAQ
+        new_category: Nouvelle catégorie FAQ
         edit_category: Edition d'une catégorie FAQ
         new_question: Nouvelle question / réponse FAQ
         edit_question: Edition d'une question / réponse FAQ
