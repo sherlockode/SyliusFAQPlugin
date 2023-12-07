@@ -2,6 +2,7 @@
 
 namespace Sherlockode\SyliusFAQPlugin\Validator\Constraints;
 
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Validator\Constraints\Length as BaseLength;
 use Symfony\Component\Validator\Constraints\LengthValidator;
 
@@ -13,6 +14,7 @@ class Length extends BaseLength
         int $max = null,
         string $charset = null,
         callable $normalizer = null,
+        string $countUnit = null,
         string $exactMessage = null,
         string $minMessage = null,
         string $maxMessage = null,
@@ -27,21 +29,39 @@ class Length extends BaseLength
                 return strip_tags(trim($str));
             };
         }
-        
-        parent::__construct(
-            $exactly,
-            $min,
-            $max,
-            $charset,
-            $normalizer,
-            $exactMessage,
-            $minMessage,
-            $maxMessage,
-            $charsetMessage,
-            $groups,
-            $payload,
-            $options
-        );
+
+        if (Kernel::VERSION_ID >= 60300) {
+            parent::__construct(
+                $exactly,
+                $min,
+                $max,
+                $charset,
+                $normalizer,
+                $countUnit,
+                $exactMessage,
+                $minMessage,
+                $maxMessage,
+                $charsetMessage,
+                $groups,
+                $payload,
+                $options
+            );
+        } else {
+            parent::__construct(
+                $exactly,
+                $min,
+                $max,
+                $charset,
+                $normalizer,
+                $exactMessage,
+                $minMessage,
+                $maxMessage,
+                $charsetMessage,
+                $groups,
+                $payload,
+                $options
+            );
+        }
     }
 
     /**
