@@ -21,42 +21,39 @@ class QuestionTranslationType extends AbstractResourceType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $questionConstraints = [new Length(min: 2, max: 255, groups: ['sylius'])];
+        $answerConstraints = [new CKEditorLength(min: 2, groups: ['sylius'])];
+
         $builder
             ->add('question', TextType::class, [
                 'label' => 'sherlockode_sylius_faq.ui.question.question',
-                'constraints' => [
-                    new Length(min: 2, max: 255, groups: ['sylius'])
-                ],
+                'constraints' => $questionConstraints,
             ])
             ->add('answer', CKEditorType::class, [
                 'label' => 'sherlockode_sylius_faq.ui.question.answer',
-                'constraints' => [
-                    new CKEditorLength(min: 2, groups: ['sylius'])
-                ],
+                'constraints' => $answerConstraints,
             ])
         ;
 
-        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
-            $data = $event->getData();
-            if ('' !== $data['question'] || '' !== $data['answer']) {
-                $event->getForm()
-                    ->add('question', TextType::class, [
-                        'label' => 'sherlockode_sylius_faq.ui.question.question',
-                        'constraints' => [
-                            new NotBlank(groups: ['sylius']),
-                            new Length(min: 2, max: 255, groups: ['sylius']),
-                        ],
-                    ])
-                    ->add('answer', CKEditorType::class, [
-                        'label' => 'sherlockode_sylius_faq.ui.question.answer',
-                        'constraints' => [
-                            new NotBlank(groups: ['sylius']),
-                            new CKEditorLength(min: 8, groups: ['sylius'])
-                        ],
-                    ])
-                ;
+        $builder->addEventListener(
+            FormEvents::PRE_SUBMIT,
+            function (FormEvent $event) use ($questionConstraints, $answerConstraints)
+            {
+                $data = $event->getData();
+                if ('' !== $data['question'] || '' !== $data['answer']) {
+                    $event->getForm()
+                        ->add('question', TextType::class, [
+                            'label' => 'sherlockode_sylius_faq.ui.question.question',
+                            'constraints' => array_merge([new NotBlank(groups: ['sylius'])], $questionConstraints)
+                        ])
+                        ->add('answer', CKEditorType::class, [
+                            'label' => 'sherlockode_sylius_faq.ui.question.answer',
+                            'constraints' => array_merge([new NotBlank(groups: ['sylius'])], $answerConstraints)
+                        ])
+                    ;
+                }
             }
-        });
+        );
     }
 
     /**
